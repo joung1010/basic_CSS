@@ -99,4 +99,36 @@ margin 값이 더 큰쪽이 작은쪽을 덮어쓴다(상쇄 시킨다).
 - margin 값을 가진 첫째 또는 마지막 혹은 유일한 자식 요소를 하나 또는 둘 이상의 가지고 있는 부모 요소
 - 콘텐츠, padding, border 높이가 지정되지 않은 요소
   
+## 프로퍼티 축약(shorthand Properties)
+여러 다른 프로퍼티의 값을 단일 프로퍼티로 결합한 것을 말합니다.  
+개별 프로퍼티
+```
+border-width: 2px
+border-style: dash | solid
+border-color: orange
 
+margin-top: 5px
+margin-right: 10px
+margin-bottom: 5px
+margin-left: 10px
+```
+  
+축약 프로퍼티
+```
+border: 2px dashed orange
+
+margin: 5px 10px 5px 10px
+  //순서 top right bottom left
+
+margin: 5px 10px
+//순서 top & bottom left & right  
+
+margin: 10px
+  // top right bottom left 모두 10px
+```
+  
+border 의 같은 경우 축약 프로퍼티의 순서는 상관 없으나 핵심은 바로 개별 프로퍼티와 동일하게 인식된다는 거에 있다.  
+축약을 사용하면 코드가 좀 더 간결하고 깔끔해 지는 장점이 있고   
+먼저 축약 버전을 정의한다음 필요한 부분 혹은 명시도가 높은 클래스를 통해 개별 프로퍼티를 이용해서 한 부분만을 덮어쓸 수도 있다.  
+개발자 도구를 통해 축약 프로퍼티 안에 개별 프로퍼티들을 확인할 수 있다.
+![shorthand.PNG](more_about_css/shorthand.PNG)  
