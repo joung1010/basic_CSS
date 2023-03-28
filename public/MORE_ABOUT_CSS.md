@@ -71,3 +71,32 @@ body {
 우리가 선택한 `h1`태그에 별도로 margin 값을 주지않아도 브라우저 기본값인 margin before, margin after가 적용 되어 있다.  
 위의 margin은 section 컨테이너 바깥에 있으므로 요소의 일부가 아니다.  
 즉, section 콘텐츠 부분이 아니라는 의미이다.
+  
+## 여백 상쇄(margin collapsing)의 이해 및 여백(margin) 기본값 제거
+우리가 별도로 `body` 테그에 margin 값을 설정하지 않아도 브라우저 기본 값이 적용 되어 있다.  
+여기서 우리는 margin 값을 조정해서 기본 값을 제거하고 상쇄하는 법에 대해 확인해보자.  
+```
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+```
+  
+margin 프로퍼티에 0 값을 설정함으로써 body 에 바깥쪽 여백을 제거할 수 있다.  
+  
+여기서 또 다른 포인트는 형제 관계에 있는 태그들의 margin 값이 서로 겹친다는 것이다.  
+![box.PNG](more_about_css/2.margin.PNG)  
+![box.PNG](more_about_css/3.margin.PNG)  
+  
+바리 오리헌 현상을 여백 상쇄라고 한다.  
+두 margin 값이 존재하는 두가지 요소가 나란히 있다고 가정했을때  
+margin 값이 더 큰쪽이 작은쪽을 덮어쓴다(상쇄 시킨다).  
+이는 CSS에서 강제로 수행하는 작업이며 이렇게 함으로써 두 요소 간 거리가 너무 멀어지지 않게 유지할 수 있다.  
+따라서 이와 같은 경우에는 margin-top, margin-botton을 이용해서 상쇄가 일어나는 일을 막는 것이 좋다. 
+  
+기본적으로 발생 발생하는 3가지 사례를 확인해보자.  
+- 둘 다 바깥쪽 여백을 가진 인접 형제 요소
+- margin 값을 가진 첫째 또는 마지막 혹은 유일한 자식 요소를 하나 또는 둘 이상의 가지고 있는 부모 요소
+- 콘텐츠, padding, border 높이가 지정되지 않은 요소
+  
+
