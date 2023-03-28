@@ -303,4 +303,26 @@ body {
 }
 ```
 이런식 으로 결합자를 추가하면 위에서 추가한 `inherit` 키워드를 제거 해도 동일한 결과를 얻을 수 있다.  
-또한 이런 결합자를 이용했을 때의 명시도는 기본 요소 선택자보다 그 명시도가 높다.
+또한 이런 결합자를 이용했을 때의 명시도는 기본 요소 선택자보다 그 명시도가 높다.  
+  
+## 총저리
+  
+- Selectors
+  - div
+  - .blog-name
+  - #main-title
+  - [disabled]
+  - `*`
+- Properties
+  - background-color
+  - width
+  - height
+  - margin
+  - display
+- Values
+  - red
+  - 30%
+  - #fa923f
+  - 10px
+  - block
+    ![valueType.PNG](basic_css/valueType.PNG)
