@@ -31,6 +31,17 @@ body {
     background: #2ddf5c;
     padding: 8px 16px;
 }
+.main-header > div {
+    display: inline-block;
+}
+.main-nav {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 54px);
+}
 .main-nav__item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
     display: inline-block;
 }

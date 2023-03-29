@@ -275,3 +275,60 @@ header 추가
   
 하지만, `visibility:hidden`의 경우에는 요소를 숨기지만 해당 공간은 유지합니다.  
 둘 모두 가시성에서는 사라지지만 실제 `DOM`에서 제거되지 않기때문에 `Javascript`를 통해서 접근할 수 있습니다. 
+  
+## inline-block의 동작 이해
+```
+.main-header > div {
+    display: inline-block;
+}
+.main-nav {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 49px);
+}
+.main-nav__item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+<header class="main-header">
+    <div>
+        <a href="index.html">
+            uHost
+        </a>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li class="main-nav__item">
+                <a href="packages/index.html">Packages</a>
+            </li>
+            <li class="main-nav__item">
+                <a href="customers/index.html">Customers</a>
+                <a href="customers/index.html">Customers</a>
+            </li>
+            <li class="main-nav__item">
+                <a href="start-hosting/index.html">Start Hosting</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+```
+![block.PNG](more_about_css/inlineblock.PNG)  
+위의 그림처럼 `nav` 태그 width 값을 `100%` 에서 `div`태그의 width 값만큼 뺀 값을 설정해도  
+여전히 한줄에 위치하는 것이 아니라 그 다음줄에 위치하는 것을 확인할 수 있다.  
+이렇게 배치되는 원인은 무엇일까???  
+그 이유는 `display:inline-block`과 관련있다.  
+![block.PNG](more_about_css/2.inlineblock.PNG)  
+보통 편집기를 이용한 위와 같이 자동적으로 가시성을 위해 앞족에 공백을 두어 보기 편하게 정렬해준다.  
+이게 일반적으로는 문제를 일으키지 않는다.  
+`그러나 실제로 이 빈 공백은 문자로 간주되어 추가 인라인 요소로 추가된다.`  
+따라서 특정 빼려고 하는 `width`값은 인라인 요소의 `width`값과 그 공백의 너비도 같이 포함되어야 한다.  
+따라서 편집기에서 공백을 제거해 준다면  
+![block.PNG](more_about_css/3.inlineblock.PNG)
+![block.PNG](more_about_css/4.inlineblock.PNG)  
+이런식으로 한줄에 요소가 위치하는 것을 볼 수 있다.  
+하지만 딱봐도 보기에 좋은 방법은 아니다.  
+추후에 좀 더 깔끔한 방법을 배워보자.
