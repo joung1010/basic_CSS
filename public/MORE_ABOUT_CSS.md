@@ -159,3 +159,56 @@ border 의 같은 경우 축약 프로퍼티의 순서는 상관 없으나 핵�
 만약 `section` 요소가 100% 일때 이 크기를 키우고 싶다면 부모 요소의 height 값을 변경하면 된다.  
 ![main.PNG](more_about_css/main.PNG)  
   
+## Box-sizing(박스 크기 조정) 이해
+Height 와 Width 그 둘을 통해서 박스의 높이와 너비를 바꿀 수 있다.  
+근데 이때 바뀌었다는 것이 정확히 뭘까??  
+height 와 width를 성정한 대상이 `콘텐츠` 영역인가? 아니면 `padding` ,`border`, `margin`  
+정확히 어느 영역까지 영향을 미치는 걸까??  
+```
+#product-overview {
+    background: #ff1b68;
+    width: 100%;
+    height: 528px;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+}
+```
+![widthAndHeight.PNG](more_about_css/widthAndHeight.PNG)  
+콘텐츠의 높이는 우리가 설정한 528px로 나와있다. width 역시 100% 이다.  
+단, 이때 `padding`, `border`, `margin` 이 추가 되었고  
+이로 인해 실제 너비와 높이가 지정한 값보다 더 커지는 상황이 발생한 거다.  
+실제 `section` 요소의 너비는 `1950px`이고 높이는 `558px`로 표기된다.  
+이는 콘텐츠 영역에서 `padding`, `border`, `margin` 의 너비와 높이를 더하면 나온다.  
+  
+따라서, 콘텐츠의 높이(height)와 너비(width)를 지정할때 padding 과 margin, border의 값은 산출 되지 않는다.
+하지만 이 모든 수치가 더해진 값이 브라우저에서 표시되고 결국 요소가 우리가 원하는 위치에 위치하지 않는 원인이 된다. 
+
+이를 `content-box`라는 개념이고 모든 요소에 기본적으로 너비와 높이를 산출하는 특정 방법이 내재 되어 있음을 뜻한다.  
+이는 우리가 `box-sizing` 프로퍼티를 추가함으로써 이 너비 높이 산출 방법을 설정할 수 있고  
+기본으로 `box-sizing`프로퍼티에 `content-box`값이 할당되어있다.  
+이값을 `border-box`로 변경하면 너비와 높이 값이 padding 과  border 값을 포함하여 설정 된다.(margin 값은 제외)  
+![boxsize.PNG](more_about_css/boxsize.PNG)  
+  
+이렇게 `border-box`가 유횽하기 때문에 보통 일반적으로 모든 요소의 기본 설정 값을 대체해서 사용한다.  
+그래서 `body` 쪽 스타일에 추가해보자  
+```
+body {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+```
+![boxsize.PNG](more_about_css/2.boxsize.PNG)  
+다시 `content-box` 값으로 변경된 것을 확인할 수 있는데  
+이는 box-sizing 설정이 상속되었기 때문이다.  
+하지만 스타일에 어딜봐도 `box-sizing`설정을 찾아 볼 수 없다.  
+이는 `section` 요소의 기본 값이 `display:block` 이기 때문에 브라우저에서 자체적으로 `box-sizing`을 설정 했기 때문이다.  
+  
+따라서 위와 같은 경우에는 전체 선택자를 이용해야 한다.  
+보통 전체선택자는 모든 요소의 특정 동작을 리셋하고자 할 때 사용한다.
+```
+* {
+    box-sizing: border-box;
+}
+```
