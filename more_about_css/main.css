@@ -5,9 +5,8 @@ body {
 
 #product-overview {
     background: #ff1b68;
-    padding: 20px;
-    border: black 5px solid;
-    margin: 20px;
+    width: 700px;
+    height: 100%;
 }
 
 .section-title {
