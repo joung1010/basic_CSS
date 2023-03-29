@@ -332,3 +332,40 @@ header 추가
 이런식으로 한줄에 요소가 위치하는 것을 볼 수 있다.  
 하지만 딱봐도 보기에 좋은 방법은 아니다.  
 추후에 좀 더 깔끔한 방법을 배워보자.
+  
+## text-decoration 및 vertical-align
+```
+.main-header__brand {
+    color: #0e4f1f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+    <div>
+        <a href="index.html" class="main-header__brand">
+            uHost
+        </a>
+    </div>
+    <nav class="main-nav">
+    <ul>
+        <li class="main-nav__item">
+            <a href="packages/index.html">Packages</a>
+        </li>
+        <li class="main-nav__item">
+            <a href="customers/index.html">Customers</a>
+            <a href="customers/index.html">Customers</a>
+        </li>
+        <li class="main-nav__item">
+            <a href="start-hosting/index.html">Start Hosting</a>
+        </li>
+    </ul>
+</nav>
+```
+이렇게 스타일링 하고 보니 `nav` 태그의 콘텐츠가 완전히 가운데 있지 않다.  
+![vertical.PNG](more_about_css/vertical.PNG)  
+그 이유는 위에서 설정한 `font-size`가 전체 헤더의 높이를 설정하기 때문에  
+왼쪽의 `uHost`는 가운데에 위치해 있지만 `nav` 태그의 텍스트는 `uHost`의 `font-size`보다 작고  
+`uHost`의 첫 번째 단어의 아래쪽에 맞춰 세로 정렬되어 있다.  
+이러한점을 해결하기위해 `inline-block` 요소 `nav`와 `div` 에 `vertical-align` 프로퍼티의 값을 `middle` 로 설정함으로써  
+두 요소 모두 같은 중앙에 위치해 있는 것을 확인할 수 있다.  
