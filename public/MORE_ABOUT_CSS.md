@@ -436,4 +436,25 @@ p::first-letter {
       - ![link.PNG](more_about_css/link.PNG)
   - [MDN 의사요소](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
   
-즉 요소의 상태 와 요소의 특정 부분이라는 큰 차이점을 가지고 있다.
+즉 요소의 상태 와 요소의 특정 부분이라는 큰 차이점을 가지고 있다.  
+  
+## 그룹화 규칙
+```
+.main-nav__item a:hover {
+    color: white;
+}
+.main-nav__item a:active {
+    color: white;
+}
+```
+위의 두 코드는 완전히 동일하다.  
+위와 같은 경우가 생기면 이렇게 코드를 반복하는 건 좋지 않다.  
+왜냐하면 혹시라도 색을 변경하거나 어떤 스타일을 추가할때 두 부분 모두 바꿔야하기 때문이다.  
+따라서 하나의 규칙으로 묶는게 좋다.  
+이때 사용하는게 `,` 이다.  
+```
+.main-nav__item a:active,
+.main-nav__item a:hover {
+    color: white;
+}
+```
