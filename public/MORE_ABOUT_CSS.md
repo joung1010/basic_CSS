@@ -369,3 +369,71 @@ header 추가
 `uHost`의 첫 번째 단어의 아래쪽에 맞춰 세로 정렬되어 있다.  
 이러한점을 해결하기위해 `inline-block` 요소 `nav`와 `div` 에 `vertical-align` 프로퍼티의 값을 `middle` 로 설정함으로써  
 두 요소 모두 같은 중앙에 위치해 있는 것을 확인할 수 있다.  
+  
+## 의사 클래스(Pseudo Class) 추가하기
+우리가 특정 요소에 마우스를 올려 놓거나 계속 클릭했을 때 등에 스타일을 변경할 수 있다.  
+이를 위해 `의사 클래스`를 사용한다.  
+
+```
+<header class="main-header">
+    <div>
+        <a href="index.html" class="main-header__brand">
+            uHost
+        </a>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li class="main-nav__item">
+                <a href="packages/index.html">Packages</a>
+            </li>
+            <li class="main-nav__item">
+                <a href="customers/index.html">Customers</a>
+                <a href="customers/index.html">Customers</a>
+            </li>
+            <li class="main-nav__item">
+                <a href="start-hosting/index.html">Start Hosting</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+```
+의사 클래스
+```
+// 마우스를 올렸을때
+.main-nav__item a:hover {
+    color: white;
+}
+// 활성됬을때
+.main-nav__item a:active {
+    color: white;
+}
+```
+의사요소
+```
+// p 태그의 처번째 글자에 대해 적용
+p::first-letter {
+    color: red;
+    font-size: 20px;
+}
+
+.main-nav__item a::after {
+    content: " (Link)";
+}
+```
+태그선택자에 :(콜론)을 통해 의사 클래스를 설정할 수 있다.  
+  
+### 의사 클래스(Pseudo Class) 와 의사 요소(Pseudo Element)  
+- Pseudo Class
+  - 마우스를 특정 태그에 올려두거나 활성 상태와 같은 요소의 특수 상태에 대한 스타일을 정의할 수 있도록 한다.
+  - :(콜론)class name -> a:hover, a:active
+  - [MDN 의사클래스](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
+- Pseudo Element
+  - 요소의 특정 부분의 스타일을 정의할 수 있다.
+  - ::element name
+    - ex) ::after, ::before -> 이둘을 통해서 설정할 수 있는 content 라는 프로퍼티가 존재한다.
+      - content 프로퍼티 : 문자열 형태로 값을 가지고 DOM에 콘텐츠를 추가한다.
+      - ![link.PNG](more_about_css/link.PNG)
+  - [MDN 의사요소](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
+  
+즉 요소의 상태 와 요소의 특정 부분이라는 큰 차이점을 가지고 있다.
