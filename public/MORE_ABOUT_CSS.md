@@ -212,3 +212,58 @@ body {
     box-sizing: border-box;
 }
 ```
+  
+## display 프로퍼티 이해
+header 추가  
+```
+<header class="main-header">
+    <div>
+        <a href="index.html">
+            uHost
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li class="main-nav__item">
+                <a href="packages/index.html">Packages</a>
+            </li>
+            <li class="main-nav__item">
+                <a href="customers/index.html">Customers</a>
+            </li>
+            <li class="main-nav__item">
+                <a href="start-hosting/index.html">Start Hosting</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+```
+  
+`display` 프로퍼티를 이용하면 요소의 동작을 바꿀 수 있다.  
+예를 들어 블록에서 인라인으로 바꾸거나 인라인 블록을 통해 두 속성 모두 갖게 하거나  
+혹은 `DOM`에서 완전히 삭제시킬 수도 있습니다.
+  
+`HTML` 에는 `inline` 과 `block` 레벨이 존재한다.  
+대표적으로 `inline` 에는 `a` 태그를 들 수 있다.  
+이는 블록 레벨 처럼 전체 너비를 사용하는 것이 아닌 해당 콘텐츠에 필요한 영역 만큼을 차지한다.  
+`block` 레벨은 전체 너비를 사용한다.  
+둘 모두 박스 모델을 사용하지만 `inline` 레벨은 margin(바깥 여백)값 설정이 불가능하다.  
+왜냐하면 margin 값을 설정해 두면 다른 요소와 줄이 겹칠 우려가 있기 때문이다.  
+
+![block.PNG](more_about_css/2.block.PNG)  
+기본적으로 `a` 태그는 `inline` 이지만 `display` 프로퍼티를 통해 `block`레벨로 변경 하였다.  
+`block` 레벨은 너비 전체를 사용하기때문에 첫번째 Customers `a` 태그와 같은 레벨에 있을 수 없기 때문에 한줄 내려간 모습을 확인할 수 있다.  
+
+![block.PNG](more_about_css/block.PNG)  
+  
+또한 `display : none` 을 통해서 화면에서 삭제할 수 있다.  
+이는 안보이는 것이 아니라 실제 문서 대열 자체에서 없어진 것이다.  
+하지만 `display:none` 으로 설정된 요소라도 여전히 `DOM`의 일부긴 합니다.  
+  
+정리
+- display
+  - inline : 콘텐츠 크기만큼 차지
+  - block : 너비 전체 사용
+  - none : 화면에서 삭제(안보이게 함)
+  - inline-block: 이라인 요소처럼 각 요소가 나란히 위치하게 되지만 블록 레벨 요소처럼 margin(바깥 쪽여백) 및 padding(안쪽 여백)을 설정할 수 있다.
+  
+`inline-block` 설정을 통해 한줄로 표시하고 박스의 여백등을 설정할 수 있다.
