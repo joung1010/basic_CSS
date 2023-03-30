@@ -35,6 +35,11 @@ body {
         모든 인라인 요소, 즉 박스 안의 모든 텍스트를
     */
 }
+.plan--highlighted {
+    background: #19b84c;
+    color: white;
+    box-shadow: 2px 2px 2px 2px rgb(0,0,0);
+}
 /* h1 {
     font-family: sans-serif;
 } */
