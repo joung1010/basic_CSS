@@ -19,7 +19,7 @@ color: #521751;
 
 .main-section {
     height: 800px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc !important;
     padding: 16px;
 }
 
