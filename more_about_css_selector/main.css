@@ -16,6 +16,9 @@ a {
 a.active {
 color: #521751;
 }
+a:not(.active) {
+    color: blue;
+}
 
 .main-section {
     height: 800px;
