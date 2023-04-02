@@ -155,3 +155,9 @@
 따라서 `font` 축약 프로퍼티를 사용해서 그값 으로 `inherit`를 주면 상속에 대한 명시도를 높여 준다.  
 그래서 브라우저 기본값보다 상속에 대한 명시도가 우선시 된다.  
 ![button.PNG](practice_basic_css/3.button.png)  
+  
+### outline
+`outline` 프로퍼티는 `border`과 비슷하지만 박스 모델에 속하지 않는다.  
+`border`는 박스 모델의 부분이지만 `outline`은 아니라는 점을 명심해야 한다.  
+즉, `outline`은 `border`과 유사한 것으로 박스의 외부에 적용된다.  
+`margin`  과 `border`사이에 있으며 `border`의 가벼운 버전이라 생각하면 된다.
