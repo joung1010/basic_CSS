@@ -51,11 +51,22 @@ body {
 .plan__jobs {
     list-style: none;
     padding: 0;
+    margin: 0;
     text-align: center;
 }
 .plan__jobs > li {
     display: inline-block;
     margin: 0 1px;
+}
+
+.plan__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+.plan__features li {
+    margin: 8px 0;
 }
 /* h1 {
     font-family: sans-serif;
