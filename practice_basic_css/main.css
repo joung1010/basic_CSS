@@ -107,6 +107,33 @@ color: #0e4f1f;
     color: white;
     margin: 32px;
 }
+.key-features__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.key-feature {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
+.key-feature__image {
+    background: #ffcede;
+    width: 128px;
+    height: 128px;
+    border: 2px solid #242424;
+    border-radius: 50%;
+    margin: auto;
+
+}
+
+.key-feature__description {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
 /* h1 {
     font-family: sans-serif;
 } */

@@ -160,4 +160,14 @@
 `outline` 프로퍼티는 `border`과 비슷하지만 박스 모델에 속하지 않는다.  
 `border`는 박스 모델의 부분이지만 `outline`은 아니라는 점을 명심해야 한다.  
 즉, `outline`은 `border`과 유사한 것으로 박스의 외부에 적용된다.  
-`margin`  과 `border`사이에 있으며 `border`의 가벼운 버전이라 생각하면 된다.
+`margin`  과 `border`사이에 있으며 `border`의 가벼운 버전이라 생각하면 된다.  
+  
+### margin: auto;
+![margin_auto.png](practice_basic_css/margin_auto.png)  
+어떤 요소들을 중앙에 정렬하고 싶을때 한가지 방법중 하나가 `margin` 프로퍼티를 이용하는 것이다.  
+`margin`요소는 왼쪽에서 또는 오른쪽에서 설정할 수 있는데  
+중앙 정렬하려면 그 값을 어마나 설정해야 할까??  
+`margin:0 auto` 또는 `margin: auto`로 설정하면 된다.  
+`auto`는 자동으로 사용 가능한 공간의 왼쪽과 오른쪽을 균드앟게 맞춰 요소의 수평 중심을 맞춰준다.  
+단, 수직으로는 맞추지 않는다.  
+![margin_auto.png](practice_basic_css/2.margin_auto.png)  
