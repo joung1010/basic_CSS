@@ -171,3 +171,40 @@
 `auto`는 자동으로 사용 가능한 공간의 왼쪽과 오른쪽을 균드앟게 맞춰 요소의 수평 중심을 맞춰준다.  
 단, 수직으로는 맞추지 않는다.  
 ![margin_auto.png](practice_basic_css/2.margin_auto.png)  
+  
+## footer 추가
+footer 역시 다른 앱이나 다른 페이지에서 다르게 사용할 수 있기 때문에  
+태그 선택자에 스타일을 적용하기 보다는 `class` 를 추가하는 방식이 더 효율적이다.
+```
+<footer class="main-footer">
+    <nav>
+        <ul class="main-footer__links">
+            <li class="main-footer__link">
+                <a href="#">Support</a>
+            </li>
+            <li class="main-footer__link">
+                <a href="#">Terms of Use</a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+
+.main-footer {
+    background: black;
+    color: white;
+}
+```  
+![footer.png](practice_basic_css/footer.png)  
+먼저 적용된 스타일을 확인해보면 `ul`태그에서 margin 값이 상 하로 존재하는 것이 보이고  
+우리가 지정한 font 색상이 white 값이 적용되지 않은 것을 확인할 수 있다.  
+그이유는 우리의 `font` 프로퍼티를 상속 받지만 상속 받은 `class`값보다  
+브라우저에서 기본적으로 제공하는 스타일의 명시도가 더 높기 때문에 그렇다.  
+![footer.png](practice_basic_css/2.footer.png)  
+따라서 적용되지 않는 color 프로퍼티를 제거하고 스타일작업을 진행해준다.  
+```
+.main-footer {
+    background: black;
+    padding: 32px;
+    margin-top: 32px;
+}
+```
