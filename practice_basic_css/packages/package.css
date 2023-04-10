@@ -1,0 +1,36 @@
+.package {
+    border: 4px solid #0e4f1f;
+    width: 50%;
+    margin: 43px auto;
+}
+#plus {
+    background: #b5fac1;
+}
+#premium {
+    background: #0e4f1f;
+}
+.package a {
+    text-decoration: none;
+    color: inherit;
+    padding: 32px;
+    display: block;
+}
+.package:hover {
+    border: 4px solid #f5a20d;
+    box-shadow: 3px 3px 2px 5px rgba(0,0,0,0.5);
+}
+.package__title {
+    font-family: 'Anton', sans-serif;
+}
+.package__sub {
+    color: #858585;
+}
+.package__description {
+    border: 2px solid #0e4f1f;
+    padding: 10px;
+    color: #0e4f1f;
+}
+#premium .package__description {
+    border: 2px solid white;
+    color: white;
+}
