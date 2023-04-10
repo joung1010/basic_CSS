@@ -8,11 +8,10 @@ main {
     margin: 16px 0;
     border-left: none;
 }
-#plus {
-    background: #b5fac1;
-}
-#premium {
-    background: #0e4f1f;
+.package:hover,
+.package:active{
+    border-color: #ff5454;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
 }
 .package a {
     text-decoration: none;
@@ -20,23 +19,28 @@ main {
     padding: 32px;
     display: block;
 }
-.package:hover {
-    border: 4px solid #f5a20d;
-    border-left: none;
-    box-shadow: 3px 3px 2px 5px rgba(0,0,0,0.5);
-}
-.package__title {
-    font-family: 'Anton', sans-serif;
-}
 .package__sub {
-    color: #858585;
+    color: #979797;
 }
 .package__description {
     border: 2px solid #0e4f1f;
-    padding: 10px;
+    padding: 16px;
     color: #0e4f1f;
+    font-size: 20px;
+    background: white;
 }
-#premium .package__description {
-    border: 2px solid white;
+#plus {
+    background: rgba(181, 250, 193, 0.95);
+}
+#free {
+    background: rgba(234, 252, 237, 0.95);
+}
+#premium {
+    background: rgba(14, 79, 31, 0.95);
+}
+#premium .package__title {
     color: white;
+}
+#premium .package__sub {
+    color: #bbb;
 }
