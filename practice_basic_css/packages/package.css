@@ -8,20 +8,24 @@ main {
     margin: 16px 0;
     border-left: none;
 }
+
 .package:hover,
-.package:active{
+.package:active {
     border-color: #ff5454;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
+
 .package a {
     text-decoration: none;
     color: inherit;
     padding: 32px;
     display: block;
 }
+
 .package__sub {
     color: #979797;
 }
+
 .package__description {
     border: 2px solid #0e4f1f;
     padding: 16px;
@@ -29,18 +33,31 @@ main {
     font-size: 20px;
     background: white;
 }
+
+.clearfix {
+    clear: both;
+}
+
 #plus {
     background: rgba(181, 250, 193, 0.95);
 }
+
 #free {
     background: rgba(234, 252, 237, 0.95);
+    float: right;
+    border-right: none;
+    border-left: 4px solid #0e4f1f;
+    text-align: right;
 }
+
 #premium {
     background: rgba(14, 79, 31, 0.95);
 }
+
 #premium .package__title {
     color: white;
 }
+
 #premium .package__sub {
     color: #bbb;
 }

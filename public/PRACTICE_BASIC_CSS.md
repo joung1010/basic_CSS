@@ -221,4 +221,50 @@ footer 역시 다른 앱이나 다른 페이지에서 다르게 사용할 수 �
   
 따라서 임포는 하는 순서가 중요하다.  
 위에 있는게 먼저 임포트 및 파싱 되며 아래 있는 파일이 두번재로 파싱된다.  
-즉, `share.css` 파일의 스타일을 덮어쓰려면 덮어쓸 파일을 두 번째로 임포트해야 한다.
+즉, `share.css` 파일의 스타일을 덮어쓰려면 덮어쓸 파일을 두 번째로 임포트해야 한다.  
+  
+## CSS float 프로퍼티
+과거에는 레이아웃 페이지에 자주 사용했지만 float로 인해 생기는 문제가 많아서 요즘에는 사용하지않는다.  
+대신 요즘에는 `Flexbox`를 많이 사용한다.  
+하지만 가끔 문서 대열에서 각 요소를 다르게 배치한다는 점에서 유용할 수도 있다.  
+  
+일단 `float`이란 기본 배치를 재설정한다는 것이다.  
+브라우저가 페이지의 오른쪽이나 왼쪽으로 요소를 옮기게 한다.  
+적용전
+![float.png](practice_basic_css/float.png)  
+적용후  
+```
+#free {
+    background: rgba(234, 252, 237, 0.95);
+    float: right;
+}
+```
+![float.png](practice_basic_css/1.float.png)  
+위에 사진을 보면 이제 문서 대열에 벗어난다는 의미가 무엇인지 알 수 있다.  
+보다시피 이건 올바른 방법이 전혀 아니다.  
+`float`의 원리는 이미지를 텍스트 안에 배치할 땐 유용하겠지만  
+`block-level` 요소를 배치할 땐 좋은 방법이 아니다.  
+텍스트는 이 `float`의 원리에 따라 배치되지만 다른 `block-level`요소들은 그렇지 않다.  
+그래서 위와 같은 레이아웃이 나타난 것이다.  
+  
+우리가 원하는 것은 `프리 요금제가 차지하던 공간을 그대로 유지`하고 싶은 것이다  
+즉, 다른 `block-level` 요소가 `float`프로퍼티의 영향을 받지 않고 이어지게 해야한다.  
+그러기 위해서는 배치하려는 요소 뒤에 헬퍼인 `div` 태그를 추가하면된다.  
+```
+    <section class="package" id="free">
+        <a href="#">
+            <h1 class="package__title">Our FREE Plan</h1>
+            <h2 class="package__sub">An extremely solid start into our hosting world.</h2>
+            <p class="package__description">Get started immediately at zero cost!</p>
+        </a>
+    </section>
+    <div class="clearfix"></div>
+```
+```
+.clearfix {
+    clear: both;
+}
+```
+여기서 `clear`프로퍼티는 `float` 프로퍼티를 해제하는 프로퍼티로써  
+해당 값으로 `both`는 여기서 할당할 수 있는 `left`와 `right`인 두영역에서 프로퍼티가 해제된다.  
+![float.png](practice_basic_css/2.float.png)  
