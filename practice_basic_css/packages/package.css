@@ -11,7 +11,7 @@ main {
 
 .package:hover,
 .package:active {
-    border-color: #ff5454;
+    border-color: #ff5454 !important;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -49,7 +49,9 @@ main {
     border-left: 4px solid #0e4f1f;
     text-align: right;
 }
-
+/*#free:hover {
+    border-left-color: #ff5454;
+}*/
 #premium {
     background: rgba(14, 79, 31, 0.95);
 }
