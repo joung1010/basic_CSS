@@ -63,12 +63,106 @@ HTML 문서는 일반적으로 위에서 아래로 읽혀지며, 각 요소는 �
 이말은 `이 요소의 위치를 기준으로 `20px`만큼 위로 올려달라는 의미` 이다.  
   
 다른 경우로는 `20px`이 `거리를 가리키는 경우`이다.  
-예를 들어 뷰포인트의 위쪽에서 `20px` 떨어져 있다는 의미가 되는 것이다.  
-즉 `이 뷰포인트의 기준은 `html` 요소나 `body` 요소 아니면 다른 요소를 기준으로 삼을 수도 있다.`  
-이때 `뷰포인트`는 웹페이지에서 보이는 부분을 뜻한다. 즉, 브라우저 창으로 해석해도 좋다.)  
+예를 들어 뷰포트의 위쪽에서 `20px` 떨어져 있다는 의미가 되는 것이다.  
+즉 `이 뷰포트의 기준은 `html` 요소나 `body` 요소 아니면 다른 요소를 기준으로 삼을 수도 있다.`  
+이때 `뷰포트`는 웹페이지에서 보이는 부분을 뜻한다. 즉, 브라우저 창으로 해석해도 좋다.)  
   
 이러한 선택지들을 `positioning context`라고 하며  
 의미는 어느 것을 기준으로 위치를 변경할지를 나타낸다.
 
+
+
+## fixed
+![fixed.png](css_position/0.fixed.png)  
+먼저 기본적인 화면에 스크롤을 할 수 있게 `html`태그의 `height`값을 넉넉하게 설정하여 스크롤를 생성하였다.  
+  
+```
+    <body>
+        <div class="parent">
+            <div class="child-1">Navigation Bar</div>
+            <div class="child-2">Background Image</div>
+            <div class="child-3">Features</div>
+        </div>
+    </body>
+```
+먼저 `position` 기본값을 변경하지 않고 `top`, `right`, `bottom`, `left` 프로퍼티를 사용해보자.  
+```
+.parent .child-1 {
+    top:100px;
+}
+```
+페이지를 새로고침하면, 요소의 위치가 변경되지 않았음을 확인할 수 있다.  
+즉, 배치 변경을 적용하기 위해서는 `반드시 static 이 아닌 값을 적용해야 한다.`  
+다음으로 `top` 프로퍼티를 제거하고 `position` 프로퍼티의 값을 `fixed`로 변경해 보자.  
+```
+.parent .child-1 {
+    position: fixed;
+}
+```
+![fixed.png](css_position/1.fixed.png)  
+배치되는 방식이 변경된 것을 확인할 수 있다.  
+여기서 눈에 띄는 특징이 있다.  
+
+먼저 요소의 너비가 눈에 띄게 짧아졌다는 점이다. 마치 인라인 요소 같은 모습을 보여준다.  
+두번째는 이 `position: fixed`가 적용된 요소는 이제 다른 요소들이 없는 것처럼 배치되어 있다.  
+두번째 요손인 `Background Image`가 기존`Navigation Bar`가 있던 자리를 차지하고 있다.  
+`Navigation Bar`가 존재하는데도 `Background Image`가 완전히 똑같은 배치에 들어가 있다.  
+  
+이건 `position : fixed` 값을 적용함으로써 `Navigation Bar`요소를 기존 `document flow`에서 뺴냈기 때문이다.  
+다시말해, 다른 요소들이 보기에 `Navigation Bar` 요소는 더 이상 존재하지 않는 것이다.  
+새로운 선언을 적용했기 때문이다.  
+  
+그러면 너비가 줄어든 것은 왜일까??  
+먼저 CSS 코드에서 `width` 값을 변경해보자 만약 인라인 요소라면 `width`값을 변경해도 아무런 여향이 없다.  
+```
+.parent .child-1 {
+    position: fixed;
+    width: 400px;
+}
+```
+![fixed.png](css_position/2.fixed.png)  
+  
+`width`값을 변경하고 확인하니 요소의 너비가 바뀐 것을 보아 인라인 요소로 생성되지는 않았다는 것을 확인할 수 있다.  
+사실 `인라인 블록 요소가` 생겼을 뿐이다.  
+  
+### 정리
+기존 문서 대열(document flow)에서 요소를 빼내 블록 레벨 요소의 작동 방식을 인라인 블록 요소처럼 동작하게끔 만단다.  
+  
+  
+그러면 이 내비게이션 바라는 요소를 우리가 적용한 배치 프로퍼티를 갖도록 만드는 방법은 무엇일까??  
+```
+.parent .child-1 {
+    position: fixed;
+    width: 400px;
+    top: 100px;
+}
+```
+![fixed.png](css_position/3.fixed.png)  
+위에 처럼 요소가 아래로 조금 내려왔다.  
+하지만 이 요소가 어디를 참조하고 있는지 명확하게 알 수 없다.  
+그래서 `position : 0` 값을 주고 확인해 보자  
+![fixed.png](css_position/4.fixed.png)  
+
+![fixed.png](css_position/5.fixed.png)  
+이 요소가 어디를 기준으로 하는지 확인할 수 있다.  
+`html` 요소 테두리(border)에 붙어 있는 것 같아보인다.  
+하지만 그렇게 보일 뿐이지 정확하진 않다.  
+그래서 `margin : 0`값을 제거하고 다시 확인해보자  
+  
+![fixed.png](css_position/6.fixed.png)  
+이제 기준점이 명확해 졌다.  
+이 `Navigation Bar` 요소는 `html` 요소를 기준으로 하지 않고 있는 것을 확인할 수 있다.  
+![fixed.png](css_position/7.fixed.png)  
+스크롤를 조금 내려서 다시 확인해 보니  
+확실하게 뷰포트(viewport)를 기준으로 배치 컨텍스트가 설정된 걸 알 수 있다.  
+다시 말해 뷰포트만 기준으로 삼아서 위치를 정한다는 뜻이다.  
+  
+근데 여기서 `div`태그를 `span`태그 (인라인)으로 변경하면 어떻게 될까??  
+```
+<span class="child-1">Navigation Bar</span>
+```  
+![fixed.png](css_position/8.1.fixed.png)  
+`Navigation Bar`요소가 여전히 위에 붙어 있는 것을 확인할 수 있다.  
+`position 프로퍼티를 적용할 떄는 대상이 블록 레벨 요소이든, 인라인 요소이든 상관이 없다.`
 
 
