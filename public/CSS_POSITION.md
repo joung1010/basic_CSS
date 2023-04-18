@@ -225,5 +225,21 @@ HTML 문서는 일반적으로 위에서 아래로 읽혀지며, 각 요소는 �
 동일한 `z-index`값을 갖는 두 위치 요소가 있을때에는 `HTML` 파일에서 순서에 의해 요소의 배치가 결정된다.  
 `HTML` 파일에서 보면 `background`가 `내비게이션`보다 먼저 선언되어 있다.  
 즉 내비게이션이 배경 위에 표시되는 것이다.  
-
+  
+## absolute
+`position : fixed`를 사용하면 발생하는 문제점중에 하나가  
+지정된 위치, 뷰포트에 계속 고정되어 있다는 것이다.(스크롤을 내려도 항상 그위치에 고정되어 있다.)  
+![absolute.png](css_position/absolute.png)  
+  
+이러한 문제를 해결하기 위해서는 `position` 프로퍼티에 새로운 값을 하당해야한다.
+`position`에 `absolute`라는 값을 할당하면 된다.  
+그러면 이제 뷰포트에 고정되지 않게 된다.  
+![absolute.png](css_position/2.absolute.png)  
+  
+그럼 이제 어디에 고정되는 것일까??  
+`absolute`가 지정된 요소의 경우 두 가지 경우로 나뉜다.  
+1. 어떤 조상 요소, 즉 어떤 부모 요소에도 `position`프로퍼티가 적용되지 않은 경우
+   * HTML 요소
+2. `position` 조상이 있는 경우
+   * `position` 프로퍼티가 적용된 가장 가까운 조상
 
