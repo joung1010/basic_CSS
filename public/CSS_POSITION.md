@@ -242,4 +242,53 @@ HTML 문서는 일반적으로 위에서 아래로 읽혀지며, 각 요소는 �
    * HTML 요소
 2. `position` 조상이 있는 경우
    * `position` 프로퍼티가 적용된 가장 가까운 조상
+  
+## relative
+```
+    <body>
+        <div class="parent">
+            <div class="child-1">Navigation Bar</div>
+            <div class="child-2">Background Image</div>
+            <div class="child-3">Features</div>
+        </div>
+    </body>
+```
+```
+.parent .child-1 {
+    position: relative;
+}
+```
+`position: relative;`값을 추가해 보았다.  
+![relative.png](css_position/relative.png)  
+위와서 확인해보면 화면상에는 아무것도 변경되지 않는다.  
+요소는 이 값을 적용하지 않았을 때와 동일한 방식으로 유지되거나 동작한다.  
+  
+그런데 이 `position` 프로퍼티를 사용하여 다른 요소, 즉 이 요소의 자식 요소의 배치 컨텍스트를  
+변경할 수 있다. 하지만 지금은 자식이 없으므로 당장 변경할 수 있는게 많지 않다.  
+```
+.parent .child-1 {
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+```
+![relative.png](css_position/2.relative.png)  
+`top,left`프로퍼티에 값을 주니 요소가 움직인다.  
+왜 움직이는 것일까??  
+고정 배치(fix) 와 절대적(absolute) 배치 값을 설정하면  
+요소가 문서 대열(document flow)에서 제거되어 뷰포트에 상대적으로 배치되거나  
+위에서 확인했듯이 HTML 요소 또는 position 프로퍼티가 적용된 가장 가까운 조상에 배치된다.  
+  
+하지만 `상대적(relative) 배치`는 다르다.  
+`상대적(relative) 배치`는 값 자체가 배치 컨텍스트이자 요소 자체이며  
+동시에 문서 대열에서 제외대지 않습니다.  
+  
+기본적으로 이 요소는 상단으로 부터 50px 만큼 왼쪽으로부터 50px 만큼 이동한 것이다.  
+여기서 중요한점은 `상대적(relative) 배치`는 현재 배치로부터 요소를 아래로 밀어낸다.  
+즉, 현재 위치기준으로 상단으로부터 50px 왼쪽으로 50px이동한 것이다.  
+  
+## 정리
+fixed, absolute 배치의 값은 top, left, bottom, right 프로퍼티가 부모 요소의 컨테이너 블록까지의 거리를 지정하지만  
+relative 배치는 요소가 현재 배치로부터 어떻게 이동할지를 정의한다.  
+
 
