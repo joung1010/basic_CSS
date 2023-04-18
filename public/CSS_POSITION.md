@@ -175,4 +175,55 @@ HTML 문서는 일반적으로 위에서 아래로 읽혀지며, 각 요소는 �
 }
 ```
 ![fixed.png](css_position/9.fixed.png)  
+위와 같이 왜 배경이미지가 배경이 아니라 앞으로 나와 모든 컨텐츠를 가려버린 것일까?  
+지금까지 한 작업을 돌이켜 보면, 요소들을 x축을 중심으로 좌우 y축을 중심으로 상하에 배치했다.  
+위와 같은 화면에서는 z축을 따라 요소를 배치할 필요성이 있다.  
+다행 이런 작업에 필요한 CSS 프로퍼티가 존재한다.  
+그것이 바로 `z-index` 이다.  
+이 `z-index`는 여러 값을 가진다.  
+  
+기본적으로 `auto`값을 가지면 이는 `0`과 같다.  
+이 `0`이라는 값은 y축의 관점에서 시작점을 정의한다. 
+만약 우리가 기존에 정의한 `.package` 클래스 위에 요소를 배치하고 싶다면  
+`z-index`의 값을 1, 2, 10, 100등으로 적용하면 된다.  
+특정 요소를 아래에 배치하려면 -1, -100등을 적용하면 된다.  
+  
+그런데 여기서 중요한 점은 `position` 프로퍼티가 적용되지 않은 요소에  
+`z-index`를 추가하면, 즉`position` 프로퍼티값이 정적 위치(static) 값인 요소는    
+`z-index`가 아무 영향도 주지 못한다.  
+```
+.package {
+    width: 80%;
+    margin: 16px 0;
+    border: 4px solid #0e4f1f;
+    border-left: none;
+    z-index: 999;
+}
+
+```  
+![fixed.png](css_position/9.fixed.png)  
+배경 이미지가 여전히 제일 위에 있다.  
+  
+`즉, position 프로퍼티가 없는 요소의 기본값이 0이라는 점이 중요하다`  
+```
+.background {
+    background: url("../image/plans-background.jpg");
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+}
+```
+`position 값이 없는 요소의 z-index`값은 `0`이기 때문에 이요소 뒤에 `.background` 클래스를 위치하고 싶기 때문에   
+음수 값을 설정해주면 된다.
+![z-index.png](css_position/z-index.png)  
+  
+여기서 `z-index`값을 0으로 설정했을때 `.package`클래스는 가려지지만 동일하게 `z-index`값이 `0`일 때도 내비게이션 바는  
+배경 이미지 위에 표시되는 이유는 무엇일까??  
+`z-index`의 기본값도 자동으로 `0`이다.  
+마찬가지로 내비게이션 바도 마찬가지로 `0`이다.  
+동일한 `z-index`값을 갖는 두 위치 요소가 있을때에는 `HTML` 파일에서 순서에 의해 요소의 배치가 결정된다.  
+`HTML` 파일에서 보면 `background`가 `내비게이션`보다 먼저 선언되어 있다.  
+즉 내비게이션이 배경 위에 표시되는 것이다.  
+
 
