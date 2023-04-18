@@ -163,6 +163,16 @@ HTML 문서는 일반적으로 위에서 아래로 읽혀지며, 각 요소는 �
 ```  
 ![fixed.png](css_position/8.1.fixed.png)  
 `Navigation Bar`요소가 여전히 위에 붙어 있는 것을 확인할 수 있다.  
-`position 프로퍼티를 적용할 떄는 대상이 블록 레벨 요소이든, 인라인 요소이든 상관이 없다.`
-
+`position 프로퍼티를 적용할 떄는 대상이 블록 레벨 요소이든, 인라인 요소이든 상관이 없다.`  
+  
+## z-index
+```
+.background {
+    background: url("../image/plans-background.jpg");
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+```
+![fixed.png](css_position/9.fixed.png)  
 
