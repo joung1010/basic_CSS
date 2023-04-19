@@ -290,5 +290,87 @@ HTML 문서는 일반적으로 위에서 아래로 읽혀지며, 각 요소는 �
 ## 정리
 fixed, absolute 배치의 값은 top, left, bottom, right 프로퍼티가 부모 요소의 컨테이너 블록까지의 거리를 지정하지만  
 relative 배치는 요소가 현재 배치로부터 어떻게 이동할지를 정의한다.  
+  
+### overflow
+```
+.parent {
+    background: white;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+    overflow: hidden;
+  }
+```
+`overflow:hidden`은 이름 그대로 넘치는 것을 숨겨 주는 기능을 한다.  
+![overflow.png](css_position/overflow.png)  
+이처럼 부모 밖으로 나가면 요소를 숨긴다.  
+따라서 위치를 조금만 변경해보면  
+```
+.parent .child-1 {
+    position: relative;
+    top: 180px;
+    left: 50px;
+}
+```
+![overflow.png](css_position/2.overflow.png)  
+부모 요소 밖에 있는 부분은 여전히 안보인다.  
+  
+  
+```
+body {
+    background: #fa923f;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+.parent {
+    background: white;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+    position: relative;
+    top: 200px;
+  }
+```
+이렇게 코드를 적용되면 어떻게 될까??
+부모 요소 `body`를 넘어간 값들은 안보이게 될까??  
+![overflow.png](css_position/3.overflow.png)  
+결과는 아무리 새로고침해도 아무것도 바뀌지 않는다.  
+왜 이런 일이 발생하는 것일까??  
+그것은 바로 `CSS의 기본 동작 때문이다.`  
+`overflow:hidden` 선언을 `body`요소에 적응하면  
+이는 여기 있는 html 요소로 전달됩니다.  
+즉 `html` 선택자로 전달되는 것이다.  
+결과적으로 `overflow:hidden` 선언이 `body`요소에 없는 셈이 되는 것이다.  
+따라서 이 선언이 영향을 전혀 미치치 않는다. 이는 CSS 기본 동작이기때문에 변경할 수 없다.  
+하지만 다른 방식으로 시도해 볼 수 있다.  
+```
+html {
+    background: #b3b3b3;
+    padding: 15px;
+    border: 5px solid white;
+    margin: 15px;
+    height: 2000px;
+    overflow: hidden;
+}
+
+body {
+    background: #fa923f;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+    overflow: hidden;
+  }
+```
+이렇게 body 와 html 같이 적용시켜주는 것이다.  
+![overflow.png](css_position/4.overflow.png)  
+이렇게 되면 `overflow: hidden`이 `html` 요소로 전달되지 않는다.  
+왜냐하면 이미 같은 선언을 갖고 있기 때문이다. 그래서 작동하는 것이다.  
+  
+이러한 스킬은 body 요소가 부모가 아니면 전혀 문제되지 않는다.
+
+
 
 
