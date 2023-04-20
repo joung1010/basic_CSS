@@ -369,7 +369,43 @@ body {
 이렇게 되면 `overflow: hidden`이 `html` 요소로 전달되지 않는다.  
 왜냐하면 이미 같은 선언을 갖고 있기 때문이다. 그래서 작동하는 것이다.  
   
-이러한 스킬은 body 요소가 부모가 아니면 전혀 문제되지 않는다.
+이러한 스킬은 body 요소가 부모가 아니면 전혀 문제되지 않는다.  
+  
+## sticky
+먼저 바로 코드에 적용해복 어떤 배치 효과를 가지는지 확인해보자  
+```
+.parent .country {
+    background: #fa923f;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    position: sticky;
+}
+```
+단순하게 `position: sticky`값을 추가한다고해서 변하는 것은 없다.  
+![sticky.png](css_position/1.sticky.png)  
+위치를 변경할 수있는 프로퍼티 값을 추가하고 스크롤을 내려보면  
+```
+top : 20px
+```
+![sticky.png](css_position/2.sticky.png)  
+이 `USA`라는 요소가 처음에는 움직이 않다가 스크롤을 이동하면 마치 `fixed` 값처럼 동작한다.  
+![sticky.png](css_position/3.sticky.png)  
+여기서 더 아래로 스크롤하면 `France`요소가 위에서 `USA`요소처럼 동작하는 것을 볼 수 있다.  
+그럼 `sticky`는 어떤 기능을 했을까??  
+  
+`sticky` 배치는  `relative` 배치와 `fixed`배치의 조합이라고 할 수 있다.  
+왜냐하면 `top:20px` 지정한 값을 제거하고 페이지를 새로고침하면 아무것도 변겯되지 않는다.  
+즉, `document flow`에서의 배치를 변경하지 않고 `relative`배치처럼 요소의 배치를 변경하는 프로퍼티를 추가한 셈이다.  
+하지만 `top:20px` 프로퍼티를 추가하면 요소는 어떤 테두리에 도달하자마자 `fixed` 배치처럼 동작한다.  
+이때 도달하는 테두리는 뷰포트의 배치에 따라 달라진다.  
+확일위해 `top:0`값을 주고 스크롤을 내려보면 이 테두라가 뷰포트와  `USA`요소 간의 간격임을 알 수 있다.  
+또 하나의 특이점은 해당 요소가 부모 요소 콘텐츠의 끝부분에 도달하면 그때부터 고정하기를 멈춘다는 점이다.
+
+
+  
+
 
 
 
