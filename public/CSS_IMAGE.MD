@@ -104,6 +104,26 @@
 `background-position: left top 0 0`  
 `background-position: left 10% top 20% ;`  
 ![background.png](css_image/4.position.png)  
+  
+  
+## background 축약  
+background 축약형에 포함된 것들  
+* background-image
+  * 한개 이상의 배경이미지를 설정한다.
+* background-color
+  * 배경 색을 지정
+* background-position
+  * 초기 위치를 설정하는데 배경 위치 레이어를 기준으로 설정
+* background-size
+  * 배경 이미지의 사이즈를 설정
+* background-repeat
+  * 배경 이미지의 반복을 정의
+* background-origin
+  * 배경의 배치 영역을 설정
+* background-clip
+  * 배경이 테두리 밑으로 확장될 수 있는지 여부를 정의
+* background-attachment
+  * 이미지 내 스크롤 동작을 정의
 
 
 
