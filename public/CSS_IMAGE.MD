@@ -162,9 +162,33 @@ background 축약형에 포함된 것들
 ![background.png](css_image/6.origin.png)  
   
 ## background-attachment
-`background-attachment`사용하면 배경이미지에 스크롤을 추가할 수 있다.
-
-
+`background-attachment`사용하면 배경이미지에 스크롤을 추가할 수 있다.  
+  
+## 축약
+```
+    background: url("freedom.jpg");
+    background-size:  cover;
+    background-repeat: no-repeat;
+    background-position: left 10% top 20% ;
+    background-origin: border-box;
+    background-clip: border-box;
+```
+축약을 할때 `position` 과 `size`는 `position/size`  
+```
+background: url("freedom.jpg") left 10% top 20%/cover;
+```
+그다음 다른 프로퍼티들을 고려해서 `background-repeat`을 축약한다.  
+같은 값을 가지는 프로퍼티가 없기때문에 위치는 크게 상관은 없다
+```
+background: url("freedom.jpg") left 10% top 20%/cover no-repeat;
+```
+다음으로 `background-origin` 과 `background-clip`도 같은 값을 갖지만 이 경우에는 순서가 중요하다  
+만약 `border-box`라는 값만 주게되면 `background-origin` , `background-clip` 모두 적용된다.  
+```
+background: url("freedom.jpg") left 10% top 20%/cover no-repeat border-box;
+```
+물론 개별적으로 값을 지정할 수도 있다.  
+만약 값으로 `border-box padding-box`주게 되면 첫번쨰는 `-origin`, 두번째는 `-cip`이 된다. 
 
 
 
