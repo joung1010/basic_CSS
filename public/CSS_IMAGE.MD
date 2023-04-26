@@ -123,7 +123,48 @@ background 축약형에 포함된 것들
 * background-clip
   * 배경이 테두리 밑으로 확장될 수 있는지 여부를 정의
 * background-attachment
-  * 이미지 내 스크롤 동작을 정의
+  * 이미지 내 스크롤 동작을 정의  
+  
+## background-origin
+`background-origin` 은 `box-sizing`가 비슷하다.  
+할당할 수 있는 값이 꽤 비슷하고 거기에 추가적인 값이 있다.  
+먼저 `background-origin`을 좀더 이해하기 쉽게 하기위해서 `border: 5px dashed red` 값을 주고 시작할 것이다.  
+![background.png](css_image/1.origin.png)  
+위에 처리 테두리에 점선 테두리가 생겼다.  
+자세히 보면 왼쪽과 오른쪽 테두리 안에 여백이 있는 것을 확인할 수 있고 위아래는 이미지에 닿아 있다.  
+잘 보면 테두리는 컨테이너 너비와 동일하지 않은 것 같아 보인다.  
+위아래 역시 컨테이너 높이와 같지 않은데 이미지 위아래 테두리를 넘어간 것이다.  
+  
+`background-origin`은 이러한 부분을 조정할 수 있다.  
+`background-origin: border-box`값을 주게되면
+![background.png](css_image/3.origin.png)  
+이미지 좌우 부분도 테두리의 뒤로 들어간 것을 확인할 수 있다.  
+이를 통해서 `background` 프로퍼티에 대해 컨테이너 크기를 정의한 것이다.  
+기본값이 `border-box`가 아니기 때문에 여백이 생기는 것이다.  
+  
+이번에는 `background-origin: content-box`값을 주게 되면 좌우에 여백이 생긴것을 확인할 수 있고  
+이는 `section`을 확인해보면 `padding`값임을 확인할 수 있다.  
+즉, `content-box`는 `box-sizing`처럼 테두리 밑 안쪽 여백이 없는 콘텐츠영역를 뜻한다.  
+따라서 우리 이미지의 너비와 높이를 정의하는 컨테이너는 테두리와 안쪽 여백이 없는 컨테이너가 됩니다.  
+  
+그래서 `background-origin`의 기본값은 `box-sizing`에서 설정할 수 없는 `padding-box`가 기본값이다.  
+이는 컨테이너에 콘텐츠와 padding은 있지만 테두리는 없는 것이다.
+![background.png](css_image/4.origin.png)  
+
+## background-clip
+`background-clip`은 초과되는 부분에 대해서 처리하는 것이다.  
+`background-clip: padding-box`값을 주게되면 기존 `border-origin:border-box`와 차이가 없는데
+`background-clip: padding-box`값을 주게되면 그 차이점을 확인할 수 있다.  
+![background.png](css_image/5.origin.png)  
+위에서 확인할 수 있듯이 테두리뒤에 이미지가 없다.  
+즉 `background-clip`은 어디를 자를지 정의한다.  
+`background-clip: content-box`  
+![background.png](css_image/6.origin.png)  
+  
+## background-attachment
+`background-attachment`사용하면 배경이미지에 스크롤을 추가할 수 있다.
+
+
 
 
 
