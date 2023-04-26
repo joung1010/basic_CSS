@@ -74,3 +74,36 @@
 ![background.png](css_image/5.background.png)  
 혹은 `repeat-x`라는 값을 주게 된다면 이미지가 x축으로 반복해서 출력한다.  
 반대로 `repeat-y`라는 값을 주면 y축으로 반복해서 출력된다.
+  
+## background-position (배경 위치)
+`background-position` 프로퍼티의 여러 사용법이 있지만 먼저 간단하게 값으로 `px`값을 지정해 보자  
+`background-position: 20px`  
+![background.png](css_image/1.position.png)  
+위에서 볼 수 있듯이 이미지가 오른쪽으로 20px 이동한 것을 확인할 수 있다.  
+이로소 우리는 첫번째 값을 지정해주면 `x축`값을 정의한다는 것을 확인할 수 있다.  
+이는 이미지 및 컨테이너의 왼쪽 모서리를 기준으로 `20px` 떨어진 곳으로 이동한다.  
+  
+이상태에서 두번째 값을 지정하게 되면, `background-position: 20px 50px`  
+우리는 첫번째 값이 x축을 변경하였으니 `y축`값이 변경될거라고 예측할 수 있다.  
+![background.png](css_image/2.position.png)  
+역시 이미지 및 컨테이너의 위쪽을 기준으로 50px 떨어진 곳으로 이동한다.  
+  
+`background-position`의 값으로 백분율 값을 지정하면 어떻게 될까??  
+`background-position: 10%` 값을 지정하게되면  
+![background.png](css_image/3.position.png)  
+왼쪽을 기준으로 `10%` 떨어진 곳으로 이동하는 것이 아니라 `왼쪽 여백`이 사라진 것을 확인할 수 있다.  
+`백문율 값`의 경우 조금 다르게 적용하기 때문이다.  
+`백문율 값`을 사용하게 되면 이미지가 컨테이너에 포함되지 않고  
+초과되는 부분이 얼마나 되는지 정의한다.  
+예를 들어 `background-position: 0% 10%;`이렇게 설정하면 `x축으로` 초과되는 부분은 없고  
+`y축으로 10%`만큼 이미지가 초과되는데 자세히보면 사진이 살짝 아래로 내려간 것을 확인할 수 있다.  
+즉, 이미지를 초과되는 영역을 조정함으로써 컨테이너 안에서의 위치를 조정할 수 있다.  
+위와 같은 방식으로 수동으로 `이미지`의 위치를 지정할 수 있고   
+
+`background-position: center(50% 50%)`처럼 사전에 정의된 값을 사용할 수도 있다.  
+`background-position: left top 0 0`  
+`background-position: left 10% top 20% ;`  
+![background.png](css_image/4.position.png)  
+
+
+

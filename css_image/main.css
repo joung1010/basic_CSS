@@ -3,8 +3,9 @@
 #product-overview {
     /*background: url("freedom.jpg");*/
     background-image: url("freedom.jpg");
-    background-size:  contain;
+    background-size:  cover;
     background-repeat: no-repeat;
+    background-position: left 10% top 20% ;
     width: 100%;
     height: 528px;
     padding: 10px;
