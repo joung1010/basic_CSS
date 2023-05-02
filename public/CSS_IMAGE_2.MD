@@ -106,3 +106,20 @@ background-image: linear-gradient(180deg,red,transparent);
 `background-image: linear-gradient(180deg,red 70%,blue,rgba(0,0,0,0.5));`  
 색상 옆에 해당 색상이 차지하는 비율을 값을 설정할 수 있다.  
 ![style.png](css_image/6.gradient.png)  
+  
+## 원형 그라데이션
+`radial-gradient()` 는 특정한 형태로 시작해 주변으로 퍼져나가는 형식의 그라데이션이다.  
+`background-image:radial-gradient(red,blue) ;`  
+![style.png](css_image/7.gradient.png)  
+선형 그라데이션과 다르게 첫번째 인자로 형태를 지정할 수 있다.  
+`background-image:radial-gradient(circle at top left,red,blue,green);`  
+`background-image:radial-gradient(circle at 20% 30%,red,blue,green) ;`  
+![style.png](css_image/8.gradient.png)  
+  
+또한 형태의 크기를 설정할 수 있다.  
+`background-image:radial-gradient(circle 20px at 20% 30%,red,blue,green) ;`  
+`background-image:radial-gradient(ellipse 20px 20px at 20% 30%,red,blue,green) ;`  
+`background-image:radial-gradient(ellipse farthest-side  at 20% 30%,red,blue,green) ;`  
+`background-image:radial-gradient(ellipse close-side  at 20% 30%,red,blue,green) ;`  
+`background-image:radial-gradient(ellipse close-coner  at 20% 30%,red,blue,green) ;`  
+![style.png](css_image/9.gradient.png)  
