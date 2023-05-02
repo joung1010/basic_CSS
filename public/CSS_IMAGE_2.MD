@@ -64,3 +64,45 @@
 브모 컨테이너가 `inline-block`일때 `box-shadow` css를 적용했을 때  
 이때 이미지 아래에 보기 싫은 여백이 나온다.  
 이는 인라인 요소의 버그로 해당 이미지에 `vertical-align: bottom`,`vertical-align: top`값을 주면 밑에 여백이 사라진다.  
+  
+## 선형 그라데이션
+`먼저 선형과 원형 그라데이션 모두 이미지로 취급한다는 것이다.`  
+`linear-gradient()` 함수는 두개의 인자를 받는데 첫번째 인자로는 그라데이션 방향  
+만약 첫번째 인자가 색상이라면 생략할 수 있다.  
+이때 기본 방향은 수직이다.
+```
+#product-overview {
+    background: url("freedom.jpg") left 10% top 20%/cover no-repeat border-box;
+    background-image: linear-gradient(red ,blue);
+    width: 100%;
+    height: 528px;
+    padding: 10px;
+    margin-top: 43px;
+    position: relative;
+}
+```
+![style.png](css_image/gradient.png)  
+  
+이때 첫번재 인자로 방향을 설정할 수 있는데 예를 들어 `background-image: linear-gradient(to bottom,red ,blue);`  
+당장 보면 낯설지만 CSS가 이해할 수 있는 구문이다.  
+위 의미는 위에서 아래로 내려오는 방향이다.  
+![style.png](css_image/2.gradient.png)  
+  
+`background-image: linear-gradient(to left bottom,red ,blue);`  
+![style.png](css_image/2.gradient.png)  
+  
+위와 같이 방향으로 그라데이션 방향을 방향으로 지정할 수도 있고 각도로도 지정할 수 있다.  
+`background-image: linear-gradient(30deg,red ,blue);`  
+![style.png](css_image/3.gradient.png)  
+  
+뿐만 아니라 색상도 원하는 만큼 설정할 수 있다.  
+`background-image: linear-gradient(30deg,red ,blue,green,yellow,#fa923f);`  
+background-image: linear-gradient(180deg,red,transparent);  
+  
+또한 어떤 색상이 어디서 시작하고 어디서 끝나는지도 설정할 수 있다.  
+`background-image: linear-gradient(180deg,red,blue,rgba(0,0,0,0.5));`  
+![style.png](css_image/5.gradient.png)  
+각 색상이 3분의 1씩이 차지하는 것을 볼 수 있다.  
+`background-image: linear-gradient(180deg,red 70%,blue,rgba(0,0,0,0.5));`  
+색상 옆에 해당 색상이 차지하는 비율을 값을 설정할 수 있다.  
+![style.png](css_image/6.gradient.png)  
