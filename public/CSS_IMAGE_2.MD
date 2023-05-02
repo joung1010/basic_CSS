@@ -57,3 +57,10 @@
 
 ```
 ![style.png](css_image/3.style.png)  
+  
+  
+## 팁
+![style.png](css_image/top.png)  
+브모 컨테이너가 `inline-block`일때 `box-shadow` css를 적용했을 때  
+이때 이미지 아래에 보기 싫은 여백이 나온다.  
+이는 인라인 요소의 버그로 해당 이미지에 `vertical-align: bottom`,`vertical-align: top`값을 주면 밑에 여백이 사라진다.  
