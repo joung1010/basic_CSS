@@ -123,3 +123,36 @@ background-image: linear-gradient(180deg,red,transparent);
 `background-image:radial-gradient(ellipse close-side  at 20% 30%,red,blue,green) ;`  
 `background-image:radial-gradient(ellipse close-coner  at 20% 30%,red,blue,green) ;`  
 ![style.png](css_image/9.gradient.png)  
+  
+  
+## 다중 배경
+하나의 동일 요소에 여러 배경 이미지를 설정할 수 있다.  
+이런 경우에는 배경 이미지에 일종의 투명도 효과가 적용되어 있어야 한다.  
+이미지에 투명한 부분이 있거나 그라데이션에 투명 색상이 있는 식으로 설정하지 않는 다면  
+가장 맨위에 있는 배경만 보일 것이다.  
+여기서 단색 하나만 사용이 가능한데 이는 항상 맨 아래 위치해야한다.  
+```
+background : 
+1. url(...)
+2. url(...)
+3. linear-gradient(..)
+4. color
+```
+  
+`background: linear-gradient(), url("freedom.jpg") #ff1b68 left 10% top 20%/cover no-repeat border-box;`  
+위에 선형 그라데이션 부분이 이미지 앞에 작성되었으니 이미지의 위에 그라데이션이 스택된다.  
+기본적으로 왼쪽에서 오른쪽으로 읽어나가기 때문이다.  
+이때 서로 다른 배경은 `,(쉼표)`로 구분 된다.  
+근데 위의 코드를 보면 현재 `url()`함수를 통해 이미지를 그리고 뒤에 프로퍼티들을 통해 해당 이미지의 위치와 기타 설정을 지정해 주고 있다.  
+따라서 배경색을 가장 마지막으로 배경 이미지 설정 뒤로 보내야한다.
+`background: linear-gradient(), url("freedom.jpg")  left 10% top 20%/cover no-repeat border-box,#ff1b68;`  
+  
+기본 이미지
+![style.png](css_image/1.multiple.png)  
+  
+
+`background: linear-gradient(to top, rgba(80,68,18,0.6),transparent), url("freedom.jpg")  left 10% top 20%/cover no-repeat border-box,#ff1b68;`  
+이미지  
+![style.png](css_image/2.multiple.png) 
+  
+
