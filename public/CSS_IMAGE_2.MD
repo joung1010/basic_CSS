@@ -155,4 +155,30 @@ background :
 이미지  
 ![style.png](css_image/2.multiple.png) 
   
+## 필터
+필터란 무엇일까??  
+만약 `<div>`태그가 하나 있다고 가정해 보자  
+여기에 간단한 스타일을 추가한다.  
+
+```
+div{
+    background: red;
+    width:100px;
+    height:50px;
+}
+```
+  
+여기에 사전에 정의된 필터 함수를 사용해, 필터 프로퍼티를 통해서  
+해당 콘텐츠와 요소의 모양을 변경할 수 있다.  
+예를 들어 `blur` 필터는 픽셀 값을 받고 박스를 흐리게 만드는 효과가 있다.  
+이와 같이 필터의 역할은 이를 적용함르로써 요소의 외양이 변하게 된다.  
+```
+div{
+    background: red;
+    width:100px;
+    height:50px;
+    filter: blur(10px);
+}
+```  
+[MDN filter 예시](https://developer.mozilla.org/ko/docs/Web/CSS/filter)
 
