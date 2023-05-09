@@ -230,6 +230,18 @@ main 선택자 안에 `div.testimonial` 요소를 보면 margin-top 과 margin-b
 top 과 left 프로퍼티의 값을 0으로 설정해 추가하고 결과를 확인해보면  
 ![back.png](size_and_units/11.back.png)  
 완벽하게 작동하는 것을 확인할 수 있다.
+  
+## min-width/min-height
+다른 단위를 알아보기 전에 픽셀과 백분율의 재미있는 조합을 하나 보고 가보자  
+좀더 자세한 것은 반응형 디자인 파트에서 자세하게 다룰 것이다.  
+![minmax.png](size_and_units/minmax.png)  
+![minmax.png](size_and_units/1.minmax.png)  
+  
+위와 같이 특정 요소가 지나치게 작아지거나 커지는 것을 확인할 수 있다.  
+자세한 내용은 반응형에서 다시 살펴보고 그전에 이미지, 혹은 이미지 크기가 어떻게 적의되었는지 알아보자  
+이 이미지는 이미지 컨테이너 안에 있고 이 이미지 컨테이너는 width 가 65% 이고 이미지는 width 100% 값을 가지고 있다.  
+또한 이 이미지 컨테이너의 컨테이닝 블록은 가장 가까운 조상요소인 div 태그고 블록레벌로 화면의 전체 width 값을 가지고 있다.  
+
 
 
 
