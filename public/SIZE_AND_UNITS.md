@@ -135,6 +135,12 @@
 * position:sticky;
 ```
 
+### position:relative/static 와 백분율
+`position` 프로퍼티의 값이 `relative/static`인 요소의 `컨테이닝 블록`은 `absolute`와 같이 조상을 가르킨다.  
+하지만 이번에는 조상의 콘텐츠에만을 기준으로 한다.  
+그러면 기준으로 삼게 되는 조상은 가장 가까운 블록 레벨 요소가 조상 된다.
+
+
 
 
 
