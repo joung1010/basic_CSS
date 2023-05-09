@@ -139,6 +139,99 @@
 `position` 프로퍼티의 값이 `relative/static`인 요소의 `컨테이닝 블록`은 `absolute`와 같이 조상을 가르킨다.  
 하지만 이번에는 조상의 콘텐츠에만을 기준으로 한다.  
 그러면 기준으로 삼게 되는 조상은 가장 가까운 블록 레벨 요소가 조상 된다.
+  
+### height 가 100% 일때
+팝업 창이 나왔을때 주변 배경색이 약간 흐리게 하는 효과를 만들어 보자  
+```
+.backdrop {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+```
+```
+<body>
+    <div class="backdrop"></div>
+    .....
+</body>    
+```
+![back.png](size_and_units/back.png)  
+  
+하지만 위와 같이 페이지에 표시되는 것이 아무것도 없다.  
+왜 이렇게 작동되는지 한번 살펴보자  
+먼저 해당 `<div class="backdrop"/>`는 `position: relative;`가 적용 되어있기 때문에  
+기준점인 컨테이닝 블록은 가장 가까운 조상 요소가 된다.  
+즉 이경우에는 조상 요소가 `body`요소가 된다.  
+![back.png](size_and_units/2.back.png)  
+![back.png](size_and_units/4.back.png)  
+따라서 `width, height`의 값은 박스 모델에서 확인할  수 있듯이 `width`값은 `컨테이닝 블록(body)`의 width 값과 같다.  
+하지만 높이는 제대로 적용되지 않았다.  
+왜 이런 현상이 발생하는 것일까??  
+자세하게 살펴 보면 width 값은 박스 모델에서만 봐도 정의되어 있는것을 확인할 수 있지만  
+`height`의 경우에는 그 높이가 콘텐츠영역을 통해 정의되는데  
+지금 박스모델에 나와 있는 height 정보로는 `height프로퍼티의 100%` 라는 선언을 출력해 낼 수가 없다.  
+  
+그러면 이런 방법을 해결하기 위해서는 어떻게 해야할까?  
+  
+### 해결책1
+먼저 백분율 단위를 사용하는 방식을 해결하고자 한다면
+```
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+```
+![back.png](size_and_units/5.back.png)    
+이렇게 적용하면 제대로 우리의 `backdrop`이 정상 작동하는 것을 확인할 수 있다.  
+물론 `backdrop`이 `relative`이기 때문에 문서대열에서 제외되지 않았기 때문에 밑에 기존의 콘텐츠가 여전히 남아 있지만  
+여기서 중요한 것은 `body` 요소에 `height:100%`값을 추가 했다는 것이다.
+![back.png](size_and_units/6.back.png)    
+이렇게 해당 선언을 추가하면 아래 박스 모델에서 처럼 높이 값이 생기는 것을 확인할 수 있다.  
+
+### 해결책2
+```
+.backdrop {
+    position:absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+```
+`.backdrop`의 position 값을 `absolute`로 변경한다.  
+![back.png](size_and_units/7.back.png)    
+잘적용되는 것을 확인할 수 있다.  
+그이유는 position 값이 absolute 일때 컨테이닝 블록은 `position` 프로퍼티 값이 설정되어 있지 않다면 백분율 값은 뷰포트를 컨테이닝 블록으로 설정하고 기준으로 삼는다.  
+하지만 여전히 문제점이 있다.  
+먼저 맨위에 발생하는 이 간격, 여백 상쇄가 그 원인이다.  
+![back.png](size_and_units/8.back.png)  
+![back.png](size_and_units/9.back.png)  
+main 선택자 안에 `div.testimonial` 요소를 보면 margin-top 과 margin-bottom 값을 확인할 수 있다.  
+![back.png](size_and_units/10.back.png)  
+해당 margin 값을 잠시 해제하면 `.backdrop`이 패이지 전체를 덮도록 변경된 것이 확인할 수 있다.  
+그렇다면 이 여백 상쇄는 어떻게 해결할 수 있을까??
+```
+.backdrop {
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+
+}
+```
+top 과 left 프로퍼티의 값을 0으로 설정해 추가하고 결과를 확인해보면  
+![back.png](size_and_units/11.back.png)  
+완벽하게 작동하는 것을 확인할 수 있다.
+
+
 
 
 
