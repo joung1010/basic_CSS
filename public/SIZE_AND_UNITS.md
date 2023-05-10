@@ -255,13 +255,104 @@ top 과 left 프로퍼티의 값을 0으로 설정해 추가하고 결과를 확
 적용후
 ![minmax.png](size_and_units/3.minmax.png)  
   
+## em
+em 과 rem 은 `폰트 크기`를 기준으로 산출되는 단위이다.  
+이 2개의 단위를 이용하면 사용자가 원하는 대로 `font` 크기를 조정했을때 원하는 크기대로 조정 되도록 개선해 볼 것이다.  
+현재는 크롬 기본설정에서 폰트 크기를 키워도 위의 사진 옆에 설명문구의 크기는 변경 되지 않는다.  
+그 이유는 `px` 고정 값을 사용 했기 때문이다.  
 
+  
+위의 설명문구는 현재 `.testimonial`클래스를 상속받아 `font-size` 가 `20px` 이다.  
+이 해당 클래스 내의 다른 요소들을 고려하면 이 폰트 크기가 균등하게 설정되었다고 할 수 없다.  
+간단한 예로 안에 있는 `h1` 테그를 살펴 보자
+![remem.png](size_and_units/remem.png)  
+상속값 대신 `font-size`값이 `2em`으로 적용되었다고 나온다.  
+그러면 `2em`은 몇 픽셀값 일까??
+![remem.png](size_and_units/2.remem.png)  
+계산 탭에서 확인해보면 `40px`인걸 확인할 수 있고 이는 `.testimonial` 정의한 `20px` 에 기반이되어  
+`20px * 2`한 값인 `40px`이 된것이다.  
+  
+이를 통해서 em 단위가 어떻게 계산되는지 짐작해 볼 수 있다.  
+여기서 `h2.testimonial__subtitle`에 적용 되어있던 `font-size:18px` 해제하면 기존 `18px`에서 `30px`로 변경된걸 확인할 수 있다.  
+![remem.png](size_and_units/3.remem.png)  
+![remem.png](size_and_units/4.remem.png)  
+  
+해제되어 계산된 `30px`이라는 값은 재미있게도 20과 1.5를 곱한 값이다.  
+이것으로 `em`은 부모로부터 상속받은 요소의 실제 크기에 `em`앞에 붙은 숫자를 곱해서 계산한다는 것을 알 수 있다.  
+  
+다음으로 `p`태그는 `font-size`를 별도로 스타일 하지 않았기 때문에 상속받은 크기를 그대로 사용하고 있다.  
+![remem.png](size_and_units/5.remem.png)  
+  
+그러면 해당 크롬설정을 변경했을때 좀더 동적으로 우리 화면의 폰트가 변경할려면 어떻게 해야할까??
+![remem.png](size_and_units/1.remem.png)  
+  
+### 해결1
+가장 쉬운 방법은 
+```
+.testimonial {
+    font-size: 20px;
+    margin: 48px 0;
+  }
+```
+현재 적용되어 있는 `font-size`값을 `em`으로 변경하는 것이다.  
+그러면 인수에 따라 곱해서 산출되므로 좀더 동적일 것이다.  
+```
+.testimonial {
+    font-size: 1.2em;
+    margin: 48px 0;
+  }
+```
+앞서 1em 은 `16px`값 이기때문에 `1.2em`은 약 20px 정도의 값일 것이다.
+![remem.png](size_and_units/6.remem.png)  
 
+크롬에서 font-size를 변경했을때  
+![remem.png](size_and_units/7.remem.png)  
+  
+하지면 어전히 문제점이 있다.  
+여기서 동적으로 폰트 크기를 변경하기 위해서  
+```
+  .testimonial__name {
+    margin: 3px;
+    color: #ff5454;
+    font-size: 2em;
+  }
+  
+  .testimonial__subtitle {
+    margin: 0;
+    font-size: 1.1em;
+    color: #ccc;
+  }
+```
+![remem.png](size_and_units/8.1.remem.png)  
+하지만 이때 `.testimonial__subtitle` 크기를 `1.1em`즉 16*1.1 의 값인 17.6의 값을 기대 했지만  
+실제로는 `26.4px` 값이 적용되었다.  
+왜 우리의 예상보다 큰 값이 적용되었을까??  
 
-
-
-
-
+이것은 바로 `em`단위의 문제인데 위에서 보시다시피 `em`은 이전 크기를 상속한다.  
+즉, 이전 `em`에 `em`을 곱한다는 것이다.  
+이말은 브라우저에서 폰트 크기가 16px로 정의 했을때  
+이미 `.testimonial`에서 1.2em(19.2px)값이 `.testimonial__subtitle`에 상속되어 19.2*1.1 해서 21.12px 의 값이 되는 것이다.  
+따러서 이와 같은 이유로 과도하게 `em`을 사용하게 되면 상속과 곱셈이 반복되면서 예상치 못한 문제가 될 수 있다.  
+  
+## rem
+위와 같이 상속 문제를 피할 수 있는 다른 방식이 존재한다.  
+바로 `rem`단위 이다.
+다시 코드로 돌아가서  
+```
+  .testimonial__subtitle {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #ccc;
+  }
+```
+이렇게 변경하였더니 기존값에서 `17.6px`로 값이 변경된것을 확인할 수 있다.  
+왜 이렇게 바뀌었을까??  
+이는 폰트 크기의 계산이 브라우저 설정에 따른 폰트 크기 16px에 1.1을 곱한 값으로  
+rem 에 r은 루트를 의미하는데 즉, 루트요소 html 요소를 고려하여 루트 요소의 폰트 크기를 정의하는  
+브라우저 설정 값을 따른다.  
+  
+위의 단위 rem, em은 폰트 크기 외에도 다른 크기에도 적용이 가능하며  
+`이때 이 둘은 항상 폰트 크기를 기준으로 계산된다는 점을 기억해야한다.`
 
 
 
