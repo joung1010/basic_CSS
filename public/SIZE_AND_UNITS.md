@@ -421,6 +421,19 @@ rem 에 r은 루트를 의미하는데 즉, 루트요소 html 요소를 고려�
 `vim`과 정확하게 반대로 작동한다. 즉, 더큰쪽의 뷰포트 길이에 80%를 취한다.  
 ![vp.png](size_and_units/6.vp.png)  
 
+### 추가
+Windows에서 작업할 경우, vw를 추가하면 스크롤바가 나타나는 것을 경험했을 것입니다.  
+Mac에서는 문제가 없지만, Windows에서는 스크롤바가 자동으로 표시되는 문제가 발생합니다.  
+스크롤바를 표시하고 싶지 않은 경우, 다음 방법 중 하나를 활용하시면 됩니다.  
+  
+1. vw:100 대신 100% 사용
+2. hared.css 파일에서 body 선택자에 overflow-x: hidden을 추가해 가로 스크롤바 숨기기 (세로 스크롤바를 숨기려면 overflow-y: hidden 추가)
+3. ::-webkit-scrollbar 의사 요소를 활용하는 방법도 있습니다. shared.css 파일에 다음의 코드를 추가하면 됩니다.
+   1. ```
+      body: :-webkit-scrollbar {
+      width: 0
+      }
+      ```
 
 
 
