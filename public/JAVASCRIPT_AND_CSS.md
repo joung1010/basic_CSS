@@ -30,6 +30,10 @@ const backdrop = document.querySelector('.backdrop');
 backdrop.style.display = 'block';
 ``` 
 ![modal.png](Javascript_and_css/1.modal.png)  
+우리가 `Choose Plan` 버튼을 클릭했을때 어떤 동작이 작동하기 위해서 우리는 `Event 리스너`를 등록해야한다.  
+그래서 우리가 지정한 이벤트가 발생했을때 브라우저는 해당 이벤트를 감지해서 우리가 등록한 콜백함수를 호출해 준다.  
+여기서 우리가 요소에 이벤트를 등록할 수 있는 이유는 DOM요소 에서 읽어온 Element 객체의 최상의 부모는 `EventTarget`  
+이고 이 `EventTarget`은 3개의 메소드 `addEventListener`,`removeListener`,`dispatchEvent`를 가지고 있기 때문이다.  
 
   
 
