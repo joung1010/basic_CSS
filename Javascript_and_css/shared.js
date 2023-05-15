@@ -19,7 +19,11 @@ backdrop.addEventListener('click', ()=>{
     mobileNav.classList.remove('open');
     closeModal();
 });
-modalNoButton.addEventListener('click', closeModal);
+console.log(modalNoButton)
+if (modalNoButton) {
+    modalNoButton.addEventListener('click', closeModal);
+}
+
 
 toggleButton.addEventListener('click', () => {
     mobileNav.classList.add('open');
@@ -27,6 +31,8 @@ toggleButton.addEventListener('click', () => {
 });
 
 function closeModal() {
+    if (modal) {
+        modal.classList.remove('open');
+    }
     backdrop.classList.remove('open');
-    modal.classList.remove('open');
 }
