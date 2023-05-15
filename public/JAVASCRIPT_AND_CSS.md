@@ -14,4 +14,22 @@
 따라서 우리는 모달을 보여주기 위해서는 display 프로퍼티 값을 `none`이 아니게 해주어야 한다.
 ![modal.png](Javascript_and_css/modal.png)  
   
+이렇게 항상 수동으로 `display` 프로퍼티 값을 변경하기에는 매우 비효율적이고 불편하다.  
+따라서 우리의 목표는 해당 프로퍼티를 동적으로 바꾸는 것이다.  
+이를 위해 `JavaScript`로 요소의 스타일을 변경하는 방법을 이해해야 한다.  
+여기서 굳이 `JavaScript`를 사용하는 이유는 `JavaScript`가 유일하게 페이지 로드 후 코드를 실행할 수 있는 도구이기 때문이다.  
+  
+`JavaScript`는 브라우저의 DOM(Document Object Model)에 접근하여 특정요소의 CSS를 변경,추가,수정이 가능하다.  
+`JavaScript` 내용을 다루는 것이 아니기 때문이 간단하게 필요한 부분만 언급하고 넘어간다.  
+먼저 특정 요소에 대한 정보를 가지고 오고싶을때는 `document.querySelector`를 사용면된다.  
+특정 요소들의 배열을 반환 받고 싶을때는 `document.querySelectorAll`을 사용하면 된다. 
+이렇게 해당 DOM API 를 이용해서 특정 요소의 정보에 대한 객체를 가지고 올 수 있고  
+해당 객체안에는 요소에대한 스타일 정보도 포함하고 있다.  
+```
+const backdrop = document.querySelector('.backdrop');
+backdrop.style.display = 'block';
+``` 
+![modal.png](Javascript_and_css/1.modal.png)  
+
+  
 
