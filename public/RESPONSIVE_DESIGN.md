@@ -72,3 +72,21 @@ CSS 픽셀(소프트웨어 픽셀)을 고려한다는 뜻이다.
     * 다양한 기기에 맞는 고유한 디자인을 직접 지정할 수 있다.
 
 
+## 뷰포트 메타 태그
+* meta 태그
+
+* name="viewport" 속성
+  * 뷰포트 메타 테그는 웹사이트를 보여 주는 기기의 브라우저 내 영역을(뷰포트를) 대상으로 삼으라고 지시한다.
+* content="width=device-width, initial-scale=1.0" (컨텐츠 속성)
+  * width=device-width
+    * 사용자에게 실제로 보이는 부분인 뷰포트의 페이지 너비를 설정할 수 있다.
+  * initial-scale
+    * 초기 화면 배율을 줌 레벨로 정의한다. 1.0이면 기본값이므로 줌 기능이 적용되지 않는다.
+    * 만약 값을 1.5로 바꾸고 확인해보자
+    * ![rspnse.png](responsive_design/6.rspnse.png)
+    * 화면을 줌인 해서 확대할 수 있다 만약 줌 기능을 제한 하고 싶다면 user-scalable=no 값을 추가적으로 주면된다.
+    * maximum-scale =2.0
+      * 최대 배율은 최대 줌 레벨을 제한한다.
+    * minimum-scale=1.0
+      * 최소 배율을 설정할 수 있다.
+
