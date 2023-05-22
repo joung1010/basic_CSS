@@ -223,6 +223,16 @@ main {
   min-height: calc(100vh - 3.5rem(nav 높이) - 8rem(footer 높이));
 }
 ```
+  
+## 정리
+* Responsive Design
+  * 데스크톱 뿐만 아니라 스마트폰이나 태블릿 등 사용하려는 모든기기에서 웹사이트가 잘 작동하려면 반응형 디자인이 필요하다.
+* View port MetaTag
+  * 기기의 크기에 따라 뷰포트를 조정할 수 있게 해준다.
+  * 하드웨어 픽셀(기기의 하드웨어 사양)을 소프트웨어 픽셀로 변환
+* Media Queries
+  * 기기의 너비 및 높이에 따라 프로퍼티 값을 변경
+  * CSS 코드에 @media를 추가
 
 
 
