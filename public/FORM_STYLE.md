@@ -195,3 +195,24 @@ HTML 과 CSS에서는 더욱 세련된 스타일 방법을 제공하고 있다.
 
 HTML 으로 검증하는 방법은 요소에 `required`라는 속성 값을 추가 하는 것이다.  
 이를 추가하게 되면 해당값이 반드시 존재햐아 한다.  
+  
+## 버튼 비활성화
+`<button disabled>`일때 적용되는 CSS  
+```
+.button[disabled],
+ .button[disabled]:hover{
+  cursor: not-allowed;
+  border: #a1a1a1;
+  background: #cccccc;
+  color: #a1a1a1;
+}
+또는
+.button:disabled,
+ .button:disabled:hover{
+  cursor: not-allowed;
+  border: #a1a1a1;
+  background: #cccccc;
+  color: #a1a1a1;
+}
+```
+![disabled](form_style/disabled.png)  

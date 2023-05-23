@@ -200,6 +200,13 @@ main {
   font-weight: bold;
   cursor: pointer;
 }
+.button[disabled],
+.button[disabled]:hover{
+  cursor: not-allowed;
+  border: #a1a1a1;
+  background: #cccccc;
+  color: #a1a1a1;
+}
 
 .button:hover,
 .button:active {
