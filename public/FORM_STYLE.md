@@ -50,3 +50,36 @@
   * 대괄호를 닫기전에 `i`문자를 추가하면 대소문자를 무시하라는 의미
   * `i`를 추가하지 않으면 대소문자를 구분
   * `<img src="1.CDN.com">`
+
+
+## outline
+`<input type="text">` 요소 일때 해당 요소를 클릭하게되면 테두리의 색이 변경되거나 혹은 짙어진다.    
+mac 에 경우는 테두리가 파란색으로 나온다.
+![input](form_style/3.input.png)  
+```
+기본적인 CSS가 적용되서 그렇다
+: focus {
+  outline: -webkit-focus-rising-color auto 5px;
+}
+```
+![input](form_style/input.png)
+![input](form_style/1.input.png)  
+  
+그러면 이 outline(외곽선)과 border(테두리)는 뭐가 다를까??  
+`outline`은 border과 아주 비슷하지만 몇가지 차이점이 있다.  
+예를 들어 둘은 동시에 추가될 수 있는데 그럴때 `outline`은 늘 테두리 바깥에 그려진다.  
+박스 크기에 포함되지도 박스 그림자에도 영향을 끼치지 않는다.  
+`outline`을 아무리 두껍게 만들어도 박스 그림자에도 변화가 없다.
+  
+`outline`은 포커스를 뒀을 때 이를 표시하는 좋은 도구지만  
+조금은 다른 방법은 스타일링 해보자  
+```
+.signup-form input:focus,
+.signup-form select:focus {
+    outline: none;
+    background: #d8f3df;
+    border-color: #2ddf5c ;
+}
+```
+![input](form_style/4.input.png)  
+  
