@@ -129,3 +129,69 @@ appearance: none;
 ```
 이런식으로 `:checked` 의사 클래스를 사용해서 스타일링 할 수 있다.  
 ![checkbox](form_style/3.checkbox.png)  
+  
+## 유효성 검사
+검증이란, 일반적으로 필수 조건을 설정하는 것이다.  
+예를 들어 모든 입력란을 채워야 한다든가 이메일 입력란에 유효한 이메일 주소를 입력해야한다 등 이 있다.  
+이 검증을 구현하는 방법은 매우 많지만 실제 구현은 일반적으로 서버에서 검증을 하거나  
+Javascript 를 통해서 이루어진다.  
+  
+이번 에는 사용자가 이해하기 쉬운 피드백을 제공하는 방법을 알아보자  
+`특수한 CSS` 클래스를 정의해 유효하지 않은 입력 요소에 부여할 수 있다.  
+일단 우리는 만약 유효하지 않다면 `invalid`라는 클래스를 추가해보자  
+```
+.signup-form input.invalid,
+.signup-form select.invalid {
+    border-color: red;
+    background: #faacac;
+}
+
+```
+![invalid](form_style/invalid.png)  
+  
+이런식으로 수동으로 추가하는 방법이 있는 반면에  
+HTML 과 CSS에서는 더욱 세련된 스타일 방법을 제공하고 있다.  
+`:invalid`라는 특별한 의사 선택자가 존재한다.  
+```
+.signup-form :invalid{
+    border-color: red;
+    background: #faacac;
+}
+
+```
+위 의사 클래스를 적용하고 이메일 입력란을 클릭했다가 다른 곳을 클릭하면  
+![invalid](form_style/1.invalid.png)  
+위 처럼 invalid 스타일이 적용되는 것을 확인할 수 있다.  
+그 이유는 HTML이나 브라우저가 자동으로 검증을 진행하기 때문이다.  
+이메일을 입력하는 요소의 타입이 email 이므로 현재 입력된 t가  
+유효하지 않은 이메일 주소임을 감지하고 `invalid`의사 선택자를 적용한 것이다.  
+이때 우리가 적용한 border 색상이 적용되지 않는데 이는  
+```
+.signup-form input:not([type="checkbox"]),
+.signup-form select {
+    border: 1px solid #cccccc;
+    padding: 0.2rem 0.5rem;
+    font: inherit;
+}
+```
+`not`문과 not 문 안의 선택자가 우선순위가 높기 때문에 이스타일이 우선 적용된 것이다.  
+이 문제를 해결하는 방법으로는 `!important` 라고 하는 인수를 넣어 주는 우선순위를 변경하는 것이다.    
+```
+.signup-form :invalid{
+    border-color: red !important;
+    background: #faacac;
+}
+
+```
+또 다른 해결책으로는 이 not 선택자를 통하는 것이다.
+```
+.signup-form :invalid,
+.signup-form input:not([type="checkbox"]){
+    border-color: red ;
+    background: #faacac;
+}
+
+```
+
+HTML 으로 검증하는 방법은 요소에 `required`라는 속성 값을 추가 하는 것이다.  
+이를 추가하게 되면 해당값이 반드시 존재햐아 한다.  
