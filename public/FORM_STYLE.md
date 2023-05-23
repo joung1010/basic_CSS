@@ -83,3 +83,49 @@ mac 에 경우는 테두리가 파란색으로 나온다.
 ```
 ![input](form_style/4.input.png)  
   
+## checkbox
+먼저 기존에 스타일링 되어있는 `input`중 select 만 제외하고 스타일링을 시작하자
+```
+.signup-form input:not([type="checkbox"]),
+.signup-form select {
+    border: 1px solid #cccccc;
+    padding: 0.2rem 0.5rem;
+    font: inherit;
+}
+```
+`:not` 의사 선택자를 이용해서 제외하자 이때 `()`안에는 제외할 선택자를 인자로 전달해 주면된다.  
+```
+.signup-form input[type="checkbox"] {
+    border: 1px solid #cccccc;
+    background: white;
+    width: 1rem;
+    height: 1rem;
+}
+```
+![checkbox](form_style/checkbox.png)  
+  
+확인해보면 박스의 크기가 조금 커지긴했는데 크게 변경된게 없어보인다. 여전히 기본 스타일이다.   
+![checkbox](form_style/1.checkbox.png)  
+하지만 작성한 스타일이 제대로 적용되어 있는것을 확인할 수 있다.  
+즉, `select`처럼 체크박스도 특별한 `input` 타입이다.  
+`OS`에 따라 checkbox 에 기본 스타일이 적용될 수 있다.  
+`-webkit-appearance: checkbox;` 값이 기본값으로 설정되 있는 경우가 있다. 
+그래서 해당 기본설정 값을 비활성화 해준다.
+```
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+```  
+![checkbox](form_style/2.checkbox.png)  
+
+하지만 비활성화 하게 되면 체크박스에 체크가 안되는 상황이 발생한다.  
+사실 기술적으로는 체크가 되는 것이지만 클릭했을때 표시가 되지 않는 것이다.  
+즉 단순히 체크가 됬는지 안됬는지 눈으로 확인이 불가능한 상태이다.  
+```
+.signup-form input[type="checkbox"]:checked {
+    background: #2ddf5c;
+    border: #0e4f1f1f;
+}
+```
+이런식으로 `:checked` 의사 클래스를 사용해서 스타일링 할 수 있다.  
+![checkbox](form_style/3.checkbox.png)  
