@@ -225,3 +225,57 @@ Google Fonts의 좋은 점은 사용자 정의에 따라 바로바로 폰트 패
 }
 ```
 ![style](text_and_font/style.png)  
+  
+## 사용자 지정 폰트
+우선 우리가 새로운 폰트를 만드는 작업을 하는 것이 아니기 때문에 기존 폰트를 다운 받아서 지정해보자  
+![user](text_and_font/user.png)  
+폰트를 다운로드 하고 압축을 풀어보면 네개의 ttf 파일이 나온다.
+![user](text_and_font/2.user.png)  
+파일명과 어떤 파일인지에 대해선 조금 있다가 자세하게 설명할 것이다.  
+일단 이 네개의 font-face 파일 `Bold, BoldItalic, Italic, Regular`중에 **Regular**를 페이제 추해보자  
+먼저 추가하기 위해서는 추가할 CSS 파일에서 `@font-face` 명령어 추가할 수 있다.  
+```
+@font-face {
+    font-family: "AnonymousPro";
+    src: url(""AnonymousPro-Regular.ttf"");
+}
+```
+위와 같이 font-family 의 이름과 해당 소스의 위치를 지정하면 되는데 우리는 URL을 입력할 수 없기 때문에  
+해당 다운받은 폰트를 작업 패키지에 옮겨두고 작업을 이어나가자  
+이렇게 적용하면 사용자 지정 폰트 페이스를 가져오는 것이 완료되었다.  
+```
+.package__info {
+    padding: 1rem;
+    border: 1px solid #0e4f1f;
+    font-size: 1.2rem;
+    color: #0e4f1f;
+    background: white;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'AnonymousPro', sans-serif;
+}
+```
+![user](text_and_font/3.user.png)  
+  
+이렇게 간단하게 커스텀 폰트를 우리 웹사이트에 적용할 수 있는데  
+### 왜 늘 이 방법을 사용하지 않을까??
+다시 Google Fonts 로 가보면 여기에는 여러 font-face 가 존재한다.  
+우리가 추가한 커스텀 폰트에 font-weight 프로퍼티를 추가해보면 Regular 폰트 패밀리만 가져 왔기 때문에 적용되지 않았다.  
+```
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Bold.ttf");
+}
+```  
+이렇게 코드를 추가한다 해도 현재 사용한 코드가 정확한 건 아니다.  
+코드를 확인해보면 소스는 다르지만 폰트에는 별 차이가 없다.  
+그렇다면 브라우저나 코드가 가져온 두 폰트 페이스의 차이를 어떻게 구분할까??  
+이상태에서 `font-weight`을 400 에서 700으로 변경해도 아무런 일도 발생하지 않는다.  
+그 이유는 나중에 추가한 `anonymousPro-Bold.ttf` 이코드가 이전 코드를 덮어 쓰기 때문이다.  
+따라서 구분을 위해서 `@font-face` 에 `font-wight`프로퍼티를 추가로 작성해준다.  
+```
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Bold.ttf");
+    font-weight: 700;
+}
+```
