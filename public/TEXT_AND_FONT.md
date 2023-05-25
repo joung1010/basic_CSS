@@ -161,3 +161,67 @@ Google Fonts의 좋은 점은 사용자 정의에 따라 바로바로 폰트 패
 바로 `@import` 옵션이다:  
 ![font](text_and_font/6.font.png)  
 해당 명령어를 사용하면 CSS 파일에 폰트를 가져올 수 있다.
+  
+## Font Face 와 font-style
+그러면 도대체 위에서 잠깐 언급했던 `Font Face`는 무엇일까??  
+기본적으로 해당 옵션에 있는 `Thin, Light, Regular, Meduim, Bold...`는 `폰트의 굵기` 를 나타낸다.  
+그럼 먼저 `font-weight(폰트 굵기)`가 무엇인지 살펴 보도록 하자
+이 font-weight 프로퍼티의 값으로는 기본적으로 100 에서 900사의 숫자 값을 줄 수 있고 당연히 숫자 클수록 폰트의 굵기가 두꺼워진다.  
+숫자외에 `bolder(상속된 폰트보다 더 두꺼운 굵기), inherit..`등도 값으로 줄 수 있다.  
+  
+여기서 우리는 숫자 값에 주목해보자.  
+숫자는 폰트의 굵기를 지정하며 이때 400은 보통의 폰트 굵기를 뜻합니다.  
+이때 400 대신 normal 이라는 값을 지정해 줘도 가능하다.  
+또 700은 bold와 같다.
+```
+.package__info {
+    padding: 1rem;
+    border: 1px solid #0e4f1f;
+    font-size: 1.2rem;
+    color: #0e4f1f;
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+```
+![font](text_and_font/bold.png)  
+여기서 font-weight을 900 으로 변경하면 어떻게 될까??  
+```
+.package__info {
+    padding: 1rem;
+    border: 1px solid #0e4f1f;
+    font-size: 1.2rem;
+    color: #0e4f1f;
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+```  
+![font](text_and_font/bold.png)  
+  
+이상하게도 아무런 변화가 없다. 상당히 이상한 일이다.기존 bold(700)보다 살짝 더 굵어 져야 정상 작동하는 것이 아닐까??  
+다시 Google Fonts 로 돌아가서 900이라는 숫자가 정의되어 있기 때문이다.  
+![font](text_and_font/2.bold.png)  
+  
+문제는 지금까지 우리가 기본 **font-face**인 **Regular 400**만 import 했기 때문이다.  
+만약 900 스타일을 사용하려면 해당 옵션을 추가해서 다시 import 해야만 우리가 font-weight : 900 값을 주었을때 변경되게 된다.  
+우리가 사용할 font-weight 들을 font-face 옵션에서 선택해서 가져와야 한다.  
+  
+즉, 개별 또는 대부분의 폰트 패밀리에 서로 다른 font-face 가 적용되니 우리는 모든 font-face 를 웹 사이트에 임포트 해야 한다.  
+이걸로 폰트 굵기를 변경할 수 있다.  
+  
+또 font-face 에 영향을 주는 파라미터가 있는데 그것이 **Italic** 이 있고 이는 **폰트 스타일**이다.  
+예를 들어 Thin 100 Italic 을 추가적으로 import 하면:
+```
+.package__info {
+    padding: 1rem;
+    border: 1px solid #0e4f1f;
+    font-size: 1.2rem;
+    color: #0e4f1f;
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+```
+![style](text_and_font/style.png)  
