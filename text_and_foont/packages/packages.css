@@ -63,9 +63,8 @@ main {
     font-size: 1.2rem;
     color: #0e4f1f;
     background: white;
-    /*font-family: 'Roboto', sans-serif;*/
     font-family: 'AnonymousPro', sans-serif;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .clearfix {
