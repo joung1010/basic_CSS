@@ -508,4 +508,45 @@ text-shadow: 5px 5px 2px gray;
 ```
 ![shadow](text_and_font/2.shadow.png)  
   
-이와 같이 텍스 폰트에 그림자를 설정하는 프로퍼티 이다.
+이와 같이 텍스 폰트에 그림자를 설정하는 프로퍼티 이다.  
+  
+## 폰트 축약
+폰트의 축약은 `font` 프로퍼티를 넣어서 작성하면 된다. 이때 선택 사항인 값도 있고 필수 사항인 값도 있다.  
+게다가 **값의 순서**가 맹우 중요하다  
+* 꼭 넣어야 하는 두가지 값
+  * font-size
+  * font-family
+  
+```
+font: 1.2rem 'AnonymousPro', sans-serif;
+```
+  
+* 선택 사항 값
+  * font-weight : font-size 앞에 위치
+    * ```
+       font: 700 1.2rem 'AnonymousPro', sans-serif;
+       ``` 
+  * font-variant : font-weight 앞에 위치
+    * ```
+      font: small-caps 700 1.2rem 'AnonymousPro', sans-serif;
+      ```
+  * font-style
+    * ```
+        font: italic small-caps 700 1.2rem 'AnonymousPro', sans-serif;
+      ```
+* 순서 : font-style font-variant font-weight font-size font-family
+  
+여기서 우리가 위에서 사용한 프로퍼티중에 line-height가 없는 것을 확인할 수 있다.  
+line-height 는 font-size 다음에 `/line-height 값`으로 사용하면 된다.  
+font-style font-variant font-weight font-size/line-height font-family
+```
+font: italic small-caps 700 1.2rem/2 'AnonymousPro', sans-serif;
+```
+  
+폰트의 축약은 다른한의 옵션이 더 존재하는데 그것은 바로 **시스템 폰트를 참조**하는 방법이다.  
+이 시스템 폰트라고 하면 폰트 패밀리의 기본값을 참조 한다.  
+이는 운영 체제의 다양한 부분에 적용된 값이다. 예를 들어 메시지 박스나, 상태표시줄, 메뉴와 같은 곳에 적용되는 폰트가 있다.  
+```
+font: menu;
+```
+
