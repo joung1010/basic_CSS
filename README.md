@@ -10,6 +10,7 @@
 [9. 반응형 디자인](public/RESPONSIVE_DESIGN.md)  
 [10. 폼 스타일](public/FORM_STYLE.md)  
 [11. 텍스트 및 폰트](public/TEXT_AND_FONT.md)  
+[12. Flex Box](public/FLEXBOX.md)  
   
 
 [출처: CSS 완벽 가이드 (Flexbox, Grid & Sass 포함)](https://www.udemy.com/course/css-flexbox-grid-sass/)  
