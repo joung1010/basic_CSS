@@ -63,7 +63,7 @@ main {
     color: #0e4f1f;
     background: white;
     /*font: menu;*/
-    font:700 1.2rem 'AnonymousPro', sans-serif;
+    font-size: 1.2rem ;
     /*font-style font-variant font-weight font-size/line-height font-family*/
 }
 
