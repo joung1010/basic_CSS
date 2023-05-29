@@ -279,3 +279,33 @@ Google Fonts의 좋은 점은 사용자 정의에 따라 바로바로 폰트 패
     font-weight: 700;
 }
 ```
+  
+## 포맷
+```
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+```
+  
+지금 코드도 아무런 문제점이 없지만 브라우저에게 좀더 확실한 정보를 전달하기 위해 `format`의 폰트인지를 알려 줄 수 있다.  
+즉, 브라우저에게 우리가 지정한 폰트가 어떤 확장자인지 추가 적인 정보를 전달해 줄 수 있다.  
+[can i use](https://caniuse.com/?search=ttf) 사이트 에 들어가서 확장자별 브라우저 지원현향을 알 수 있다.  
+```
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Regular.woff2") format("woff2"),
+    url("anonymousPro-Regular.woff") format("woff"),
+    url("anonymousPro-Regular.ttf") format("truetype");
+}
+```
+* .ttf -> truetype
+* .otf -> Open Type
+* .woff -> Web Open Font Format
+* .eot -> Embeded Open Type Fonts (오직 IE 에서만 지원)
