@@ -309,3 +309,103 @@ Google Fonts의 좋은 점은 사용자 정의에 따라 바로바로 폰트 패
 * .otf -> Open Type
 * .woff -> Web Open Font Format
 * .eot -> Embeded Open Type Fonts (오직 IE 에서만 지원)
+  
+  
+## 폰트 프로퍼티
+### font-size
+폰트의 크기를 증감에 영향을 미치는 프로퍼티  
+  
+```
+  .testimonial__text {
+    margin: 0.2rem;
+    font-size: 40px;
+  }
+```
+![font](text_and_font/7.font.png)  
+
+### font-variant
+텍스트 디스플레이 방식에 직접적인 영향을 미치는 프로퍼티    
+예를 들어 small-caps: 폰트의 높이는 변하지 않지만 소문자 였던 문자가 전부 대문자로 변함  
+  
+```
+  .testimonial__text {
+    margin: 0.2rem;
+    font-variant: small-caps;
+  }
+```
+![font](text_and_font/8.font.png)  
+
+### font-stretch
+장평(stretch) 레벨을 선택함으로써 폰트 디스플레이 방식을 지정할 수 있는 프로퍼티 [mdn font-stretch](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch) 참고  
+  
+```
+  .testimonial__text {
+    margin: 0.2rem;
+    font-stretch: ultra-condensed;
+  }
+
+```
+![font](text_and_font/9.font.png)  
+  
+### letter-spacing
+글자 간격을 설정하는 프로퍼티(px, rem 단위를 주로 사용)    
+  
+```
+  .testimonial__text {
+    margin: 0.2rem;
+    letter-spacing: 5px;
+  }
+```
+![font](text_and_font/10.font.png)  
+  
+위에서 확인할 수 있듯이 글자간 간격이 넓어진 것을 확인할 수 있다.  
+이것이 `letter-spacing`의 역할이다.  
+  
+### white-space
+이 공백 프러퍼티는 길이 대신 `normal`과 같은 값을 취합니다.  
+만약 `normal`을 입력하면 예상하신 것처럼 처음 기본 상태를 유지한다.  
+  
+### normal
+우리는 이 프러퍼티를 이용해서 요소에서 공백을 처리하는 방식을 변경할 수 있다.  
+해당 프로퍼티가 적용된 요소에 충분한 공간을 주면 어떻게 동작하는 지 확인할 수 있다.  
+공백이 간격을 띄워서 새로운 줄을 만들고 있다.  
+요소의 크기를 넘어가는 부분을 공백이 있는 곳에서 조절해주는 것이다.  
+![space](text_and_font/space.png)  
+  
+### no-wrap
+만약 `normal` 에서 `no-wrap`으로 변경하면:  
+```
+  .testimonial__text {
+    margin: 0.2rem;
+    white-space: nowrap;
+  }
+```  
+![space](text_and_font/1.space.png)  
+
+이름 그대로 **줄 바꿈이 일어나지 않습니다.**  
+즉, 이 요소의 모든 글자가 하나의 줄로 출력되고 창의 크기가 레이아웃에 영얗을 주지 않게 된다.  
+  
+### pre
+다음 예시로 값을 `pre`로 변경하면 `nowrap`과 차이점을 잘 모를 수 있지만  
+html 파일로 돌아와서 Enter 키로 줄바꿈을 한 뒤 확인해 보면:  
+```
+                    <p class="testimonial__text">uHost helped me realize my project 
+                        with a highly constrained budget in like no time.</p>
+```
+![space](text_and_font/3.space.png)  
+  
+우리가 html 에서 Enter로 줄바꿈을 한 project 단어 뒤에 새로운 문단이 생겼고  
+그 앞에 들여쓰기가 된 것을 호가인할 수 있다.  
+이렇게 적용된 이유는 공백을 `pre`라는 값으로 설정했기 때문이다.  
+  
+  
+### pre-line
+```
+  .testimonial__text {
+    margin: 0.2rem;
+    white-space: pre-line;
+  }
+```
+![space](text_and_font/4.space.png)  
+  
+해당 값은 각 줄을 채울 수 있을 만큼 채워준다.
