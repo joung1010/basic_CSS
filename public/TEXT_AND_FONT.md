@@ -450,3 +450,62 @@ line-height 가 24px이 되었다.
 이때 백분율 값은 사용을 피하는 것이 좋다. 그 이유는 백분율 값은 때때로 상속시에 예상치 못한 문제를 일으키키 때문이다.  
 백분율값은 요소 자체의 폰트 크기를 기준으로 하지 않고 부모에게 상속한 폰트 크기를 기준으로 하기도 해서 예상치 못한 결과가 나올 수 있다.  
 하지만 숫자 값을 사용하면 항상 줄 높이를 계산할 때 요소 내에 적용한 실제 폰트 크기를 기준으로 하게 된다. 
+  
+## text-decoration , text-shadow
+### text-decoration
+```
+.package__info {
+    ...
+    text-decoration: underline;
+}
+```
+![deco](text_and_font/deco.png)  
+  
+텍스트에 밑줄이 생긴다.  
+
+```
+.package__info {
+    ...
+    text-decoration: overline;
+}
+```
+![deco](text_and_font/1.deco.png)  
+이제는 텍스트 위에 윗줄이 생겼다.  
+  
+여기서 선의 위치 뿐만 아니라 **선의 모양또한 바꿀 수 있다**.  
+```
+.package__info {
+    ...
+    text-decoration: line-through dotted;
+}
+```
+![deco](text_and_font/2.deco.png)  
+  
+또한 선의 색또한 변경 할 수 있다.  
+```
+.package__info {
+    ...
+    text-decoration: line-through dotted red; 
+}
+```
+![deco](text_and_font/3.deco.png)  
+  
+이게 text-decoration 프로퍼티의 주 역할이다.  
+이때 중요한 점은 `a` 태그 와 같은 경우 이미 text-decoration 프로퍼티가 이미 적용되어 있다.  
+따라서 해당 테그에 text-decoration을 넣을 때는 먼저 `none`값을 통해서 기본값을 없애 주어야 한다.  
+
+
+### text-shadow
+```
+  ...
+  text-shadow: 5px 5px;
+  offset-x | offset-y | blur-radius | color 
+```
+![shadow](text_and_font/shadow.png)  
+  
+```
+text-shadow: 5px 5px 2px gray;
+```
+![shadow](text_and_font/2.shadow.png)  
+  
+이와 같이 텍스 폰트에 그림자를 설정하는 프로퍼티 이다.
