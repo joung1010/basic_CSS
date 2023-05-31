@@ -19,8 +19,12 @@ body {
     padding: 10px;
     border: 5px solid black;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    height: 1300px;
+    /*flex-direction: column;*/
+    /*flex-wrap: wrap;*/
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: flex-end;
   }
 
 .item-1 {

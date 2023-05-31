@@ -215,3 +215,49 @@ Main Axis(기본 축) 과 Cross Axis(교차 축)과는 무슨 관계가 있을�
   
 > 높이의 기준  
 > 여러 요소의 높이는 높이가 가장 큰 요소에 맞춰 조정된다.
+  
+## flex-flow(flex-direction 과 flex-wrap의 축약)
+```
+    /*flex-direction: column;*/
+    /*flex-wrap: wrap;*/
+    flex-flow: row wrap;
+```
+
+
+## align-items(항목 정렬) & justify-content(행 맞춤) 
+### align-items
+어떤 프로퍼티를 사용해야 요소의 높이가 항상 정의된 최대 높이를 따르도록 할 수 있을까??  
+바로 `align-items` 프로퍼티를 사용하면된다. `align-items`(항목 정렬)의 기본값은 stretch(늘리기)이다.  
+값을 `center`로 변경하고 변화를 확인해보자.  
+![align](flexbox/1.flex.png)  
+![align](flexbox/align.png)  
+  
+높이가 변경된 것을 확인할 수 있다.  
+`align-items`(항목 정렬) 프로퍼티를 사용하면 요소들의 높이가 어떤 영향을 받는 것일까?  
+이는 **완전히 잘못된 생각이다**. 바뀐 화면을 보고 그렇게 생각할 수 있겠지만 지금까지 배운 지식을 적영보면  
+`flex-direction`을 row 에서 column 으로 변경하면 기본 축도 변경된다고 우리는 알고있다.  
+`column`으로 값을 변경하고 확인해 보면  
+![align](flexbox/1.align.png)  
+높이에는 영향을 미치지 않는 것을 확인할 수 있다. **flex items 가 교차 축을 따라 가운데로 정렬**됐을 뿐이다.  
+매우 중요한 부분이다. flex-direction(축 방향)을 column(열)로 설정했기 때문에 교차 축이 왼쪽에서 오른쪽으로 이동하고  
+따라서 각 항목들이 화면 중앙에 위치하게 되는 것이다. 
+  
+다시 축방향을 `row`으로 변경하고 확인해보면  
+![align](flexbox/align.png)  
+항목이 교차 축을 따라 가운데 정렬 된다. 이때 교차 축은 왼쪽 상단에서 왼쪽 하단 모서리로 이동한다.  
+  
+### 정리
+align-items 프로퍼티는 언제나 교차 축을 참조하여 정렬한다.  
+* center : flex-items를 교차 축 중앙에 정렬
+* flex-start : flex-items를 교차 축의 기준점에 정렬
+* flex-end : flex-items를 교차 축의 끝 부분에 정렬
+  
+### justify-content
+기본 축을 참조하여 정렬하는 프로펕티는 무엇일까??  
+`justify-content` 프로퍼티를 이용하여 기본 축을 기준으로 flex items를 정렬할 수 있다.  
+![justify](flexbox/justify.png)  
+![justify](flexbox/1.justify.png)  
+  
+기존에 이미 교차축을 기준으로 flex items를 가운데 정렬 하였고  
+`justify-content` 프로퍼티를 이용해 기본 축을 기준으로 가운데 정렬 하였다.  
+
