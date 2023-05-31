@@ -164,4 +164,54 @@ row(행)를 column(열)으로 변경해보자
 ![flex](flexbox/11.flex.png)  
   
 flex-wrap 에서 wrap-reverse 와 비슷한 방식으로 작동한다. 항목이 하단에서 상단으로 역순으로 표시된다.  
-`column-reverse` 가 있다면 `row-reverse` 또한 존재한다.
+`column-reverse` 가 있다면 `row-reverse` 또한 존재한다.  
+  
+## 기본축과 교차축
+부모 요소인 flex 컨테이너에 flex-direction(축 방향)을 적용해서 어떤 작업을 수행하는 것일까??  
+Main Axis(기본 축) 과 Cross Axis(교차 축)과는 무슨 관계가 있을까??  
+  
+먼저 flex 컨테이너가 있고 row(행) 값을 가진 flex-direction(축 방향) 프로퍼티를 적용했다.  
+이설정은 기본값이고 이때 **기본 축의 시작점은 요소 또는 웹사이트위 왼쪽 상단 모서리**가 됩니다.  
+기본 축이 왼쪽 상단에서 오른쪽 상든으로 이동하는 경우 **교차 축은 언제나 기본 축과 동일한 시작점을 공유** 한다.  
+즉, **왼쪽 상단에서 왼쪽 하단 모서리**로 이동합니다.
+![axis](flexbox/axis.png)  
+  
+이게 기본적으로 flex items 가 표기되는 기본 동작이다.  
+기본 축을 따라 왼쪽에서 오른쪽으로 가로 행에 표시된다.  
+그렇다면 `flex-direction : row-reverse` 일때는 기존 기본 축(main)의 기준인 왼쪽 상단에서 오른쪽 상단으로 이동하게 된다.  
+역시 교차측 역시 시작 좀을 공유하기 때문에 오른쪽 상단에서 오른쪽 하단 모서리로 이동하게 된다.  
+![axis](flexbox/1.axis.png)  
+  
+이 기본축과 교차축은 `flex-direction` 프로퍼티의 값에 어떤 값을 적용하는지에 따라 두 축의 시작점과 끝점이 바뀐다.  
+이제 다시 코드로 돌아와서 다시한번 확인해보자  
+![flex](flexbox/3.flex.png)  
+첫번째 flex items 가 왼쪽 상단 모서리에서 시작되는 걸 확인할 수 있다.  
+또한 `flex-direction : row` 이기 때문에 왼쪽 에서 오른쪽으로 정렬된 것을 확인할 수 있다.  
+이것이 `기본 축`이다.  
+화면을 줄이면 flex-wrap(줄 바꿈)이 작동하고 `교차 축`을 따라 위에서 아래로 줄이 바뀐다.  
+하지만 첫번째 flex items 은 여전히 왼쪽 상단 모서리에 위치해 있다.  
+![flex](flexbox/6.flex.png)  
+  
+> flex-direction : row-reverse  
+> row-reverse 는 위에 설명한것과 정확하게 반대로 작동한다.
+  
+`flex-direction`을 이용해서 **기본 축과 교차 축을 설정할 수 있다는 점**을 반드시 기억해야 한다.  
+  
+그렇다면 여기서 궁금증이 발생한다.  
+과연 `flex-direction: column`일때 기본 축과 교차 축은 어떻게 동작할까??  
+`flex-direction:column`일때도 시**작점은 동일**하다. 여전히 왼쪽 상단 모서리 이다.  
+그런데 이번에는 **기본 축이 위쪽에서 아래쪽**으로 **교차 축이 왼쪽에서 오른쪽** 방향을 가리키게 된다.
+![axis](flexbox/2.axis.png)  
+  
+`flex-direction`은 기본 축을 정의합니다. `row`값은 기본 축이 왼쪽에서 오른쪽으로  
+`row-reverse`는 오른쪽에서 왼쪽으로 이동한다.  
+또는 `flex-direction` 값이 `column`인 경우 기본 축이 왼쪽 위에서 아래로  
+`column-reverse`인 경우에는 아래쪽에서 위쪽으로 이동하게 된다.  
+![axis](flexbox/3.axis.png)  
+  
+### 정리
+`flex-direction: row`인 경우 기본 축의 시작점은 왼쪽 상단 모서리이고 `reverse` 인 경우는 우측 상단 모서리이다.  
+`flex-driection:column`인 경우 기본 축의 시작점은 여전히 왼쪽 상단 모서리이지만 방향이 위에서 아래쪽 방향으로 이동하게 된다.  
+  
+> 높이의 기준  
+> 여러 요소의 높이는 높이가 가장 큰 요소에 맞춰 조정된다.
