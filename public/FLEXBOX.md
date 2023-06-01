@@ -283,7 +283,15 @@ justify-content: center;
 여기서 값을 `space-between` 값을 주게 되면 :  
 ![content](flexbox/3.content.png)  
 이제 요소 사이의 공간이 생기게 되는데 첫 번째 행의 요소는 교차 축이 시작되는 앞부분에  
-두 번째 행은 교차 축의 끝부분에 배치된다.
+두 번째 행은 교차 축의 끝부분에 배치된다.  
+  
+## flexbox 와 z-index
+배치(Positioning) 모듈에서 우리는 ‘정적’ 배치 이외의 값을 갖는  
+`position` 프로퍼티가 요소에 적용된 경우에만 `z-index`를 추가하는 것이 효과가 있다고 배웠습니다.  
+
+이런 동작의 한 가지 예외는 Flexbox입니다.  
+flex items(flex 컨테이너 내부의 요소들)에 `z-index`를 적용하면  
+요소에 `position` 프로퍼티를 적용하지 않았더라도 항목의 순서가 변경됩니다.
 
 
 
