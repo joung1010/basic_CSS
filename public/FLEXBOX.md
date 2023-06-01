@@ -260,4 +260,30 @@ align-items 프로퍼티는 언제나 교차 축을 참조하여 정렬한다.
   
 기존에 이미 교차축을 기준으로 flex items를 가운데 정렬 하였고  
 `justify-content` 프로퍼티를 이용해 기본 축을 기준으로 가운데 정렬 하였다.  
+  
+## align-content(콘텐츠 정렬)
+`align-content`에 `center`값을 주고 확인해보면 아무것도 바뀌지 않는 것을 확인할 수 있다.  
+![justify](flexbox/1.justify.png)  
+하지만 화면의 크기를 줄이면 차이가 발생한다.  
+`align-content` 프로퍼티 값 적용전:  
+![content](flexbox/content.png)  
+적용 후 :  
+![content](flexbox/1.content.png)  
+
+`align-content` 프로퍼티를 적용하면 **교차 축을 따라 항목을 정렬**할 수 있습니다.  
+해당 프로퍼티의 값을 `flex-start`로 변경하고 다시 확인해보자:  
+![content](flexbox/2.content.png)  
+항목이 교차 축의 시작 부분에 위치하는 것을 확인할 수 있다.  
+화면 크기를 늘리면 다시 중앙으로 돌아간다.  
+```
+align-items: center;
+justify-content: center;
+```
+그리고 다시 화면을 줄여 두 번째 줄이 생기도록 하면 다시 교차 축을 기준으로 정렬하게 된다.  
+여기서 값을 `space-between` 값을 주게 되면 :  
+![content](flexbox/3.content.png)  
+이제 요소 사이의 공간이 생기게 되는데 첫 번째 행의 요소는 교차 축이 시작되는 앞부분에  
+두 번째 행은 교차 축의 끝부분에 배치된다.
+
+
 
