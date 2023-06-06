@@ -351,7 +351,7 @@ row 에 flex-direction 이 정방향으로 적용되어 기본 축은 왼쪽에�
 단일 요소배치를 정의할 수 있다.  
   
 
-# 심화
+## 심화
   
 ## flex-grow(Flexbox 팽창)
 ![align](flexbox/align.png)  
@@ -443,10 +443,92 @@ row 에 flex-direction 이 정방향으로 적용되어 기본 축은 왼쪽에�
 다섯번째 항목은 10px 마지막 항목은 40px이 줄어들었다. 즉, 다섯 번째 항복보다 4배나 더 줄어들었다.  
 우선 요소의 축서 여부를 지정할 수 있다. 기본값을 1로 설정하면 요쇼를 축소할 수 있고 그 값이 0인 요소는 축소할 수 없습니다.  
 0이 아닌 값을 설정하면 요소를 축소할 수 있는데 **다른 요소에 더 큰 축소 값을 적용**할 경우 하나의 요소가 다른 요소에 비해  
-**얼마나 더 축소되는지를 정의할 수도 있다.**
+**얼마나 더 축소되는지를 정의할 수도 있다.**  
+  
+## flex-basis
+`flex-basis`는 간단히 말해 요소의 크기를 정의한다.  
+기본 축에 따라 달라지며 매우 중요한 프로퍼티이다. `flex-basis`는 너비나 높이 가 아니라  
+항목의 축 방향에 따라 너비와 높이 모두에 적용된다. 
+```
+.item-5 {
+  ....
+    width: 350px;
+    flex-basis: 300px;
+}
+```
+`flex-basis`가 기본 축을 참조하여 기본 축에 따라 요소의 크기를 정의한다.
+![basis](flexbox/1.basis.png)  
+현재 너비는 300px이 아니다. 그 이유는 `flex-shrink`의 기본값은 1이다.  
+즉, 이곳의 요소를 축소할 수 있다는 뜻이고 따라서 지금 보는 화면은 처음의 화면과는 다르므로 300px이 될 수 없다.  
+그리고 크기를 늘리면 300px이 되는 것을 확인할 수 있다.  
+![basis](flexbox/basis.png)  
+  
+아니면 `flex-shrink:0`을 추가 함으로써 더 확실하게 알 수 있도록 하자.
+```
+.item-5 {
+  ....
+    width: 350px;
+    flex-shrink: 0;
+    flex-basis: 300px;
+}
+.item-6 {
+  ....
+    width: 350px;
+    flex-shrink: 0;
+}
+```
+`flex-basis` 에 값을 정의한 후 flex-direction이 row라면 이때 `flex-basis`가 **width 프로퍼티를 덮어쓰며**  
+만약 `flex-basis`에 기본 값인 `auto`를 사용하는 경우 **width 값은 그대로 적용**된다.  
+이때 문제는, width 값으로 올바르게 대체되기 위해서 기본 축이 왼쪽에서 오른쪽으로 향하는 방향이어야 한다.  
+  
+만약 flex-direction 값을 column으로 변경하면 어떻게 될까??  
+당연히 기본 축이 위에서 아래로 이동할 것이고 
+```
+.item-5 {
+  ....
+    width: 350px;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+```
+![basis](flexbox/3.basis.png)  
+정의했던 대로 너비가 350px 이고 또한 컨텐츠가 표시될 만큼의 높이를 갖습니다.  
+하지만 여기서 height의 값을 추가하고  
+```
+.item-5 {
+  ....
+    width: 350px;
+    height:200px;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+```
+![basis](flexbox/4.basis.png)  
+  
+정확히 우리가 할당한 값만큼 높이를 가진다. 왜냐하면 `flex-basis`값이 `auto`이기 때문이다.  
+`flex-basis`는 기본 축에 설정된 기본값에 따라 설정되는 것이다.  
+이것이 바로 핵심인데 **기본 축이 왼쪽에서 오른쪽이면 width 값을 설정**되고  
+**기본 축이 위에서 아래라면 height로 설정되는 것이다.**  
+  
+이 말은 다른 한편으로 `flex-basis`에 값을 지정할 경우 예를 들어 300px 이라고 하면 그 값이 적용된다는 뜻이다.    
+```
+.item-5 {
+  ....
+    width: 350px;
+    height:200px;
+    flex-shrink: 0;
+    flex-basis: 300px;
+}
+```
+  
+`flex-basis`의 또다른 특징은 백분율 값을 사용할 수도 있다.  
 
+## 축약
+```
+/*flex-grow*/|/*flex-shrink*/|/*flex-basis*/
+flex :  0 1 auto
 
-
+```
 
   
 
